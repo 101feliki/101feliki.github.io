@@ -823,3 +823,24 @@ code { font-family: ui-monospace, 'JetBrains Mono', Consolas, monospace; font-si
 }
 
 @media (max-width: 860px) { .chip--b { top: 70%; right: -6%; } .chip--a { top: 16%; } }
+
+/* A bit of orange: a second accent for small details only. Green stays the main colour. */
+:root { --ember: #ff6a2b; --ember-ink: #1a0a02; --ember-soft: rgba(255, 106, 43, 0.16); }
+:root[data-theme='light'] { --ember: #e8590c; --ember-ink: #ffffff; --ember-soft: rgba(232, 89, 12, 0.12); }
+@media (prefers-color-scheme: light) { :root:not([data-theme='dark']) { --ember: #e8590c; --ember-ink: #ffffff; --ember-soft: rgba(232, 89, 12, 0.12); } }
+
+.hello { color: var(--ember-ink); background: var(--ember); box-shadow: 0 10px 24px -12px var(--ember); }
+.eyebrow::before { background: linear-gradient(90deg, var(--ember), var(--accent)); }
+.net__nodes .net__hub { fill: var(--ember); stroke: var(--ember); }
+.net__lines path:nth-child(3) { stroke: var(--ember); opacity: 0.6; }
+.portrait::after {
+  content: ''; position: absolute; left: 50%; bottom: 10%; width: 46%; aspect-ratio: 1; translate: -50% 0; z-index: -1; border-radius: 50%;
+  background: radial-gradient(circle, var(--ember-soft), transparent 70%); filter: blur(18px);
+}
+.about2__badge { color: var(--ember-ink); background: var(--ember); box-shadow: 0 20px 40px -20px var(--ember); }
+.stat--on { background: var(--ember); }
+.stat--on b, .stat--on span { color: var(--ember-ink); }
+.skillbar__track i { background: linear-gradient(90deg, var(--pop), var(--ember)); }
+.scroll-cue span { background: var(--ember); }
+.chip--a b { color: var(--ember); }
+::selection { background: var(--ember-soft); }
