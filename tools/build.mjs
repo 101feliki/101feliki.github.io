@@ -111,6 +111,26 @@ function card(p, up, opts = {}) {
   <div class="project__links">${links.join('\n    ')}</div>
 </article>`
 }
+// Skill bars on Home: how many projects use each technology, counted from _data/projects.json,
+// so they stay accurate as projects are added (no made-up percentages).
+const SKILL_GROUPS = [
+  ['Node.js & Express', ['Node.js', 'Express', 'Express 5', 'Fastify', 'NestJS']],
+  ['PostgreSQL & SQL', ['PostgreSQL', 'PostgreSQL RLS', 'SQL', 'Drizzle', 'Prisma', 'Supabase']],
+  ['React & frontend', ['React', 'Vite', 'Tailwind', 'Next.js']],
+  ['TypeScript', ['TypeScript', 'NestJS', 'Turborepo']],
+  ['DevOps & monitoring', ['Docker', 'nginx', 'Prometheus', 'Grafana', 'Monitoring', 'Render']],
+  ['Python, Java & ML', ['Python', 'FastAPI', 'Java 17', 'Spring Boot 3', 'Computer vision']],
+]
+function skills() {
+  const rows = SKILL_GROUPS.map(([label, tags]) => [label, projects.filter((p) => !p.homeOnly && p.tags?.some((t) => tags.includes(t))).length])
+  const max = Math.max(...rows.map(([, n]) => n))
+  return rows
+    .sort((a, b) => b[1] - a[1])
+    .map(([label, n]) => `<div class="skillbar"><div class="skillbar__top"><span>${esc(label)}</span><b>${n} project${n === 1 ? '' : 's'}</b></div><div class="skillbar__track"><i style="--w:${Math.round((n / max) * 100)}%"></i></div></div>`)
+    .join('\n')
+}
+const projectCount = projects.filter((p) => !p.homeOnly).length
+
 // Bento rhythm on a 12-column grid: wide + narrow, three across, narrow + wide, two halves…
 // Each row adds up to 12, so the grid stays even whatever the number of projects.
 const BENTO = [7, 5, 4, 4, 4, 5, 7, 6, 6]
@@ -128,6 +148,8 @@ const projectCards = (html, up) =>
         })
         .join('\n'),
     )
+    .replace('{{skills}}', () => skills())
+    .replaceAll('{{projectCount}}', String(projectCount))
     .replace('{{featured}}', () => projects.filter((p) => p.featured).map((p, i) => card(p, up, { hero: true, span: HOME[i % HOME.length] })).join('\n'))
 
 // {{icon:github}} in page sources becomes the inline SVG.
