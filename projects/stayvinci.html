@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stayvinci · Felix Kariuki</title>
+  <meta name="description" content="Case study: Stayvinci, a multi-tenant booking and storefront platform Felix Kariuki is building with NestJS, Drizzle and PostgreSQL row-level security.">
+  <meta name="author" content="Felix Kariuki">
+  <meta name="theme-color" content="#07090c">
+  <link rel="canonical" href="https://101feliki.github.io/projects/stayvinci.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Stayvinci · Felix Kariuki">
+  <meta property="og:description" content="Case study: Stayvinci, a multi-tenant booking and storefront platform Felix Kariuki is building with NestJS, Drizzle and PostgreSQL row-level security.">
+  <meta property="og:url" content="https://101feliki.github.io/projects/stayvinci.html">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="header">
+    <div class="wrap header__in">
+      <a class="brand" href="../index.html" aria-label="Felix Kariuki, home">
+        <span class="brand__mark">FK</span>
+        <span>Felix Kariuki<small>Backend engineer</small></span>
+      </a>
+      <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+      <nav class="nav" id="nav" aria-label="Main">
+          <a href="../index.html">Home</a>
+          <a href="../about.html">About</a>
+          <a href="../experience.html">Experience</a>
+          <a href="../projects.html" aria-current="page">Projects</a>
+          <a href="../goals.html">What's next</a>
+          <a class="btn btn--primary btn--sm nav__cta" href="../contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+<section class="case-hero">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="../projects.html">Projects</a> / <span>Stayvinci</span></nav>
+    <span class="eyebrow">Case study · My own product</span>
+    <h1>Stayvinci: a premium, multi-tenant booking and storefront platform</h1>
+    <p class="lead">Stayvinci lets hospitality and service businesses ("Houses") run bookings and a storefront under their own brand, while guests discover and book them. I'm building the whole platform, from the database to the apps.</p>
+    <div class="btns">
+      <a class="btn btn--primary" href="https://github.com/101feliki/stayvinci" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z" fill="currentColor"/></svg> View the code</a>
+      <span class="badge badge--open" style="align-self:center">In active development</span>
+    </div>
+    <div class="facts">
+      <div class="fact"><small>Role</small><span>Founder &amp; lead engineer</span></div>
+      <div class="fact"><small>Backend</small><span>NestJS · Drizzle · PostgreSQL</span></div>
+      <div class="fact"><small>Apps</small><span>React web apps · Expo (planned)</span></div>
+      <div class="fact"><small>Tooling</small><span>pnpm · Turborepo · typed SDK</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap case">
+    <nav class="toc" aria-label="On this page">
+      <a href="#why">Why I'm building it</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#tenancy">Tenant isolation</a>
+      <a href="#product">Product journey</a>
+      <a href="#quality">Quality</a>
+      <a href="#next">What's next</a>
+    </nav>
+    <div class="case__body">
+      <section id="why">
+        <h2>Why I'm building it</h2>
+        <p>I wanted to build a platform end to end, from a product specification to the database policies, and to solve a problem I care about: giving each business its own discreet, branded store, payments to its own merchant account, and staff roles, while sharing one well-run infrastructure.</p>
+      </section>
+
+      <section id="architecture">
+        <h2>Architecture</h2>
+        <div class="flow" aria-label="Architecture"><span>Guest app</span><span>Business app</span><span>Admin console</span><span>Website</span><i>→</i><span>Typed SDK</span><i>→</i><span>NestJS API</span><i>→</i><span>PostgreSQL + RLS</span></div>
+        <ul>
+          <li>One <b>NestJS API</b> (Swagger at <code>/docs</code>) serves four apps from a <b>Turborepo monorepo</b>.</li>
+          <li>Shared packages: request/response schemas and roles, a typed API client (SDK), a design system, and lint/TypeScript presets, so the apps and API can't drift apart.</li>
+          <li>Runs on <b>PGlite</b> (PostgreSQL in WebAssembly) for zero-install development, or PostgreSQL 16, Redis and Mailpit through Docker Compose.</li>
+        </ul>
+      </section>
+
+      <section id="tenancy">
+        <h2>Tenant isolation</h2>
+        <p>In a multi-tenant system, the worst bug is one business seeing another's bookings. So isolation is enforced <b>in the database</b> with PostgreSQL row-level security, not only in application code: even a query that forgets its filter can only see the current tenant's rows.</p>
+        <ul>
+          <li>Separate platform roles (Stayvinci staff) and tenant roles (inside a House), with explicit permission rules.</li>
+          <li>Sensitive fields encrypted with a dedicated data-encryption key; sign-in codes hashed with a server-side pepper.</li>
+          <li>Passwordless sign-in by email link (SMS planned).</li>
+        </ul>
+      </section>
+
+      <section id="product">
+        <h2>Product journey</h2>
+        <p>The specification walks a business through every stage, each with its states and edge cases:</p>
+        <ul>
+          <li>Joining: plan, agreement and account.</li>
+          <li>Connecting their own merchant account for payments, with neutral descriptors, marketplace fees, refunds and reconciliation.</li>
+          <li>Verification with Kenya-specific requirements by business type.</li>
+          <li>Store setup with a guided checklist, then bookings from guests.</li>
+        </ul>
+        <p>Thirty showcase stores are seeded so the full flow can be demonstrated and tested end to end, and stores can be bulk-imported from JSON.</p>
+      </section>
+
+      <section id="quality">
+        <h2>Quality</h2>
+        <p>Every change passes one command: <code>pnpm lint &amp;&amp; pnpm typecheck &amp;&amp; pnpm test &amp;&amp; pnpm build</code>, with conventional commits enforced.</p>
+      </section>
+
+      <section id="next">
+        <h2>What's next</h2>
+        <p>Wiring the remaining apps to the API, the Expo mobile guest app, and onboarding the first paying businesses. Launching Stayvinci is one of my <a href="../goals.html">main goals</a>.</p>
+      </section>
+
+      <nav class="pager" aria-label="More case studies">
+        <a href="mustek.html"><small>Previous</small><b>Mustek East Africa</b></a>
+        <a href="insurance.html"><small>Next case study</small><b>Insurance technology</b></a>
+      </nav>
+    </div>
+  </div>
+</section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__in">
+      <span>© <span id="year">2026</span> Felix Kariuki · Nairobi, Kenya</span>
+      <nav aria-label="Elsewhere">
+        <a href="https://github.com/101feliki" rel="me">GitHub</a>
+        <a href="https://gitlab.com/felixwachirakariuki" rel="me">GitLab</a>
+        <a href="https://linkedin.com/in/felix-wachira-569297296" rel="me">LinkedIn</a>
+        <a href="mailto:felixwachirakariuki@gmail.com">Email</a>
+      </nav>
+    </div>
+  </footer>
+  <script src="../assets/js/site.js" defer></script>
+</body>
+</html>

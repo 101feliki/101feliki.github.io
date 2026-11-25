@@ -1,0 +1,81 @@
+<!-- {"title": "Security: AEGIS & ARTEX defence map", "description": "Case study: AEGIS, an authorization-first assessment suite with a tamper-evident audit log, and a defence map of an AI pentest platform for Kenyan banks, by Felix Kariuki.", "nav": "projects"} -->
+<section class="case-hero">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="../projects.html">Projects</a> / <span>Security</span></nav>
+    <span class="eyebrow">Case study · Security engineering</span>
+    <h1>Security: testing that proves it was authorised, and defences for AI-driven attacks</h1>
+    <p class="lead">Autonomous, AI-driven attack tools are arriving fast. I built two things in response: a defence map that breaks one such tool down capability by capability for banks, and AEGIS, its deliberate opposite, an assessment suite that cannot act outside what a client signed off.</p>
+    <div class="btns">
+      <a class="btn btn--primary" href="https://github.com/101feliki/aegis" rel="noopener">{{icon:github}} View the code</a>
+    </div>
+    <div class="facts">
+      <div class="fact"><small>AEGIS</small><span>Python 3.10+, zero dependencies</span></div>
+      <div class="fact"><small>Evidence</small><span>Hash-chained audit log</span></div>
+      <div class="fact"><small>Research</small><span>10-segment defence map</span></div>
+      <div class="fact"><small>Audience</small><span>Banks &amp; betting operators</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap case">
+    <nav class="toc" aria-label="On this page">
+      <a href="#aegis">AEGIS</a>
+      <a href="#legal">Built for legal review</a>
+      <a href="#ledger">Ledger watchdog</a>
+      <a href="#artex">ARTEX defence map</a>
+      <a href="#ethics">How I approach security</a>
+    </nav>
+    <div class="case__body">
+      <section id="aegis">
+        <h2>AEGIS: Authorized Engagement &amp; Guarded Inspection Suite</h2>
+        <p>An authorization-first assessment harness. Nothing runs unless the target is inside a <b>signed scope</b> and within the <b>authorised time window</b>, and every action, including every refusal, is written to a tamper-evident audit log.</p>
+        <ul>
+          <li><b>Read-only by default</b>: it checks reachability, configuration and exposure, never attacks application logic.</li>
+          <li><b>Transparent</b>: requests carry an honest User-Agent naming the engagement, so the client's own team sees the authorised test in their logs.</li>
+          <li><b>Zero dependencies</b>: pure Python standard library; ships as a single file or a checksummed Linux release with a locked-down service account, and the build is reproducible.</li>
+          <li>Two front doors: a local operator console ("type a website") and a command line.</li>
+        </ul>
+      </section>
+
+      <section id="legal">
+        <h2>Built for legal review</h2>
+        <ul>
+          <li>The scope file is <b>HMAC-signed</b>: a tampered scope fails verification and the run stops.</li>
+          <li>Each audit entry hashes the previous one, so changing any past entry breaks every later hash, and <code>verify-audit</code> re-checks the whole chain.</li>
+          <li>Every log records the SHA-256 of the build that produced it, proving which version created the evidence.</li>
+          <li>Checks on money-handling systems use only GET, HEAD and OPTIONS. Moving money or manipulating bets is deliberately <b>not</b> automated.</li>
+        </ul>
+      </section>
+
+      <section id="ledger">
+        <h2>Ledger watchdog</h2>
+        <p>Installed inside a client's environment, AEGIS checks whether <b>the money adds up</b>, read-only: it identifies the database, finds the bets, wallet and balance tables (a person reviews the map), and reconciles every bet against every wallet credit. Database passwords come from the environment and are never stored or logged; MySQL is read over TLS whenever offered.</p>
+      </section>
+
+      <section id="artex">
+        <h2>ARTEX defence map</h2>
+        <p>A structured breakdown of ARTEX, an open-source (AGPL-3.0), LLM-driven autonomous penetration-testing platform, written to build <b>detection and defence services for Kenyan banks</b>. Each of ten segments pairs the real source code with what it means for a defender:</p>
+        <ul>
+          <li>Recon and discovery, web/API exploitation skills, mobile and binary reverse engineering, traffic interception.</li>
+          <li>The agent "brain" (planners, budgets, self-improvement) and local command execution with approval gates.</li>
+          <li>Data egress: captured traffic sent to LLM providers, a serious risk for any bank that runs such a tool.</li>
+          <li>The operator trust boundary: where the tool can turn on the people running it.</li>
+          <li>A final segment of <b>defence signals</b>: what a bank's monitoring should watch for.</li>
+        </ul>
+        <div class="btns"><a class="btn btn--ghost btn--sm" href="https://github.com/101feliki/aegis/blob/main/INDEX.md" rel="noopener">{{icon:github}} Read the map</a></div>
+      </section>
+
+      <section id="ethics">
+        <h2>How I approach security</h2>
+        <p class="callout"><b>Authorised, transparent, read-only first.</b> I study attack tools to defend against them, and every assessment I build is designed so a client's lawyers and blue team can see exactly what was done, and that nothing was done outside what they approved.</p>
+        <p>The same thinking runs through my day job: the <a href="mustek.html#security">Mustek security dashboard</a>, least-privilege database accounts, and audit logs on every staff action.</p>
+      </section>
+
+      <nav class="pager" aria-label="More case studies">
+        <a href="insurance.html"><small>Previous</small><b>Insurance technology</b></a>
+        <a href="../projects.html"><small>Back to</small><b>All projects</b></a>
+      </nav>
+    </div>
+  </div>
+</section>

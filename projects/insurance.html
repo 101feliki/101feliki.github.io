@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Insurance technology · Felix Kariuki</title>
+  <meta name="description" content="Case study: three insurance services by Felix Kariuki: microinsurance fraud detection, InsureLog for Spring Boot microservices, and a policy follow-up mailer.">
+  <meta name="author" content="Felix Kariuki">
+  <meta name="theme-color" content="#07090c">
+  <link rel="canonical" href="https://101feliki.github.io/projects/insurance.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Insurance technology · Felix Kariuki">
+  <meta property="og:description" content="Case study: three insurance services by Felix Kariuki: microinsurance fraud detection, InsureLog for Spring Boot microservices, and a policy follow-up mailer.">
+  <meta property="og:url" content="https://101feliki.github.io/projects/insurance.html">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="header">
+    <div class="wrap header__in">
+      <a class="brand" href="../index.html" aria-label="Felix Kariuki, home">
+        <span class="brand__mark">FK</span>
+        <span>Felix Kariuki<small>Backend engineer</small></span>
+      </a>
+      <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+      <nav class="nav" id="nav" aria-label="Main">
+          <a href="../index.html">Home</a>
+          <a href="../about.html">About</a>
+          <a href="../experience.html">Experience</a>
+          <a href="../projects.html" aria-current="page">Projects</a>
+          <a href="../goals.html">What's next</a>
+          <a class="btn btn--primary btn--sm nav__cta" href="../contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+<section class="case-hero">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="../projects.html">Projects</a> / <span>Insurance technology</span></nav>
+    <span class="eyebrow">Case study · Insurance</span>
+    <h1>Insurance technology: three services for the parts of insurance that leak money</h1>
+    <p class="lead">Insurers lose money in three quiet places: claims paid that shouldn't be, problems nobody can trace across systems, and customers who start buying cover but never finish. I built a service for each, designed to plug into an insurer's existing systems rather than replace them.</p>
+    <div class="facts">
+      <div class="fact"><small>Fraud</small><span>Express · FastAPI · PostgreSQL</span></div>
+      <div class="fact"><small>Logging</small><span>Java 17 · Spring Boot 3</span></div>
+      <div class="fact"><small>Follow-ups</small><span>Node.js · Nodemailer</span></div>
+      <div class="fact"><small>Design rule</small><span>Plug in, don't rip out</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap case">
+    <nav class="toc" aria-label="On this page">
+      <a href="#fraud">1 · Fraud detection</a>
+      <a href="#insurelog">2 · InsureLog</a>
+      <a href="#followup">3 · Follow-up mailer</a>
+      <a href="#together">How they fit together</a>
+    </nav>
+    <div class="case__body">
+
+      <section id="fraud">
+        <span class="eyebrow">01</span>
+        <h2>Microinsurance Fraud Detection</h2>
+        <p>A plug-and-play service that scores each claim for fraud risk, <b>explains why</b> a claim was flagged, and gives analysts a dashboard to decide. It can sit in front of any policy or claims system.</p>
+        <div class="flow" aria-label="How a claim is checked"><span>Claims system</span><i>→</i><span>POST /api/fraud/analyze</span><i>→</i><span>Express API</span><i>→</i><span>FastAPI scoring</span><i>→</i><span>Score 0–1 + reasons</span><i>→</i><span>Analyst dashboard</span></div>
+        <ul>
+          <li>The API adds context (the client's claims in the last 30 days) before scoring.</li>
+          <li>Signals include amounts far above normal for the product, several claims in a short time, claims right after a policy starts, late reporting and suspiciously round amounts.</li>
+          <li>Low-risk claims are approved automatically; claims scoring <b>0.6 or more</b> go to an analyst, who sees plain reasons like "Claim made 12 days after the policy started".</li>
+          <li>Scores are <b>deterministic</b>: the same claim always gets the same score, so every decision can be audited.</li>
+        </ul>
+        <div class="btns"><a class="btn btn--ghost btn--sm" href="https://github.com/101feliki/fraud-detection-system" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z" fill="currentColor"/></svg> Code</a></div>
+      </section>
+
+      <section id="insurelog">
+        <span class="eyebrow">02</span>
+        <h2>InsureLog</h2>
+        <p>A logging toolkit for insurance microservices. Add one dependency to any Spring Boot service and it gets structured insurance events, <b>automatic personal-data masking</b>, and <b>correlation IDs that follow a customer</b> from policy to claim to payment.</p>
+        <div class="flow" aria-label="InsureLog architecture"><span>policy-service</span><span>claims-service</span><span>payments-service</span><i>→</i><span>batched async HTTP</span><i>→</i><span>insurelog-server</span><i>→</i><span>Prometheus</span><i>→</i><span>Grafana</span></div>
+        <ul>
+          <li><code>insurelog-core</code>: a framework-free library (event model, PII masking, validation, HTTP shipper, Micrometer metrics).</li>
+          <li><code>insurelog-spring-boot-starter</code>: the plug-and-play part; auto-configures everything in two steps.</li>
+          <li><code>insurelog-server</code>: central ingest, search, "trace a customer journey", CSV/JSON export, Swagger and Actuator.</li>
+          <li>A demo claims service generates live traffic to show it working end to end.</li>
+        </ul>
+        <p class="callout"><b>Why it matters:</b> when a customer says "my claim disappeared", support can follow that customer's correlation ID across every service, without anyone seeing their ID number or phone in the logs.</p>
+        <div class="btns"><a class="btn btn--ghost btn--sm" href="https://github.com/101feliki/java-logging-system" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z" fill="currentColor"/></svg> Code</a></div>
+      </section>
+
+      <section id="followup">
+        <span class="eyebrow">03</span>
+        <h2>Policy follow-up mailer</h2>
+        <p>A command-line tool that reads a list of clients from Excel or CSV and sends each one a personalised follow-up email, for example to customers who started buying an insurance product but didn't finish.</p>
+        <ul>
+          <li>Recognises common column names (Name / Client Name, Email / Email Address, Product).</li>
+          <li>Skips rows with missing names, invalid emails or duplicates, and reports exactly which rows and why.</li>
+          <li>HTML and plain-text emails with client data safely escaped; company details, logo and products come from settings, nothing hard-coded.</li>
+          <li>A delay between sends to stay within mail-provider limits.</li>
+        </ul>
+        <div class="btns"><a class="btn btn--ghost btn--sm" href="https://github.com/101feliki/simple-email-notification-service" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z" fill="currentColor"/></svg> Code</a></div>
+      </section>
+
+      <section id="together">
+        <h2>How they fit together</h2>
+        <p>Together they cover a customer's whole journey: the mailer brings back customers who dropped off, InsureLog traces them across every service once they're insured, and fraud detection protects the claims they make. Each one stands alone, so an insurer can adopt one without the others.</p>
+      </section>
+
+      <nav class="pager" aria-label="More case studies">
+        <a href="stayvinci.html"><small>Previous</small><b>Stayvinci</b></a>
+        <a href="security.html"><small>Next case study</small><b>Security: AEGIS &amp; ARTEX</b></a>
+      </nav>
+    </div>
+  </div>
+</section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__in">
+      <span>© <span id="year">2026</span> Felix Kariuki · Nairobi, Kenya</span>
+      <nav aria-label="Elsewhere">
+        <a href="https://github.com/101feliki" rel="me">GitHub</a>
+        <a href="https://gitlab.com/felixwachirakariuki" rel="me">GitLab</a>
+        <a href="https://linkedin.com/in/felix-wachira-569297296" rel="me">LinkedIn</a>
+        <a href="mailto:felixwachirakariuki@gmail.com">Email</a>
+      </nav>
+    </div>
+  </footer>
+  <script src="../assets/js/site.js" defer></script>
+</body>
+</html>

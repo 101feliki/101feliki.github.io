@@ -1,0 +1,199 @@
+<!-- {"title": "Projects", "description": "Everything Felix Kariuki has built: client platforms, insurance services, security tooling, SaaS and learning projects, each with the problem, the result and links.", "nav": "projects"} -->
+<section class="case-hero">
+  <div class="wrap">
+    <span class="eyebrow">Projects</span>
+    <h1>What I've built</h1>
+    <p class="lead">Each card says what the project does, what I did, and where to look. <span class="badge badge--private">{{icon:lock}} Private</span> means client code I can't share, but the case study explains it.</p>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <div class="filters" role="group" aria-label="Filter projects">
+      <button class="filter" type="button" data-filter="all" aria-pressed="true">All</button>
+      <button class="filter" type="button" data-filter="work">Client work</button>
+      <button class="filter" type="button" data-filter="insurance">Insurance</button>
+      <button class="filter" type="button" data-filter="platform">Platforms</button>
+      <button class="filter" type="button" data-filter="security">Security</button>
+      <button class="filter" type="button" data-filter="learning">Learning</button>
+    </div>
+
+    <div class="grid grid--3">
+
+      <article class="card project project--featured" data-tags="work platform">
+        <div class="project__top"><span class="project__kind">Client · E-commerce</span><span class="badge badge--live">Live</span></div>
+        <h3>Mustek East Africa platform</h3>
+        <p>API, admin back-end, security dashboard and operations for a hardware distributor's website.</p>
+        <ul class="project__impact">
+          <li>76 automated tests gate every deploy</li>
+          <li>Photos 77% lighter with a WebP pipeline</li>
+          <li>Consent-based personalisation, careers with CV upload</li>
+        </ul>
+        <ul class="tags"><li class="tag">Express 5</li><li class="tag">PostgreSQL</li><li class="tag">Docker</li><li class="tag">nginx</li></ul>
+        <div class="project__links">
+          <a class="btn btn--primary btn--sm" href="projects/mustek.html">Case study</a>
+          <a class="btn btn--ghost btn--sm" href="https://mustekea.jasco.co.ke" rel="noopener">Live site {{icon:external}}</a>
+          <span class="badge badge--private">{{icon:lock}} Private code</span>
+        </div>
+      </article>
+
+      <article class="card project project--featured" data-tags="platform">
+        <div class="project__top"><span class="project__kind">SaaS · Booking</span><span class="badge badge--open">Building</span></div>
+        <h3>Stayvinci</h3>
+        <p>Multi-tenant booking and storefront platform: API, guest PWA, business app, admin console and website in one monorepo.</p>
+        <ul class="project__impact">
+          <li>Tenant isolation with PostgreSQL row-level security</li>
+          <li>Four apps on one typed API</li>
+          <li>30 showcase stores for end-to-end demos</li>
+        </ul>
+        <ul class="tags"><li class="tag">NestJS</li><li class="tag">Drizzle</li><li class="tag">PostgreSQL RLS</li><li class="tag">React</li><li class="tag">Turborepo</li></ul>
+        <div class="project__links">
+          <a class="btn btn--primary btn--sm" href="projects/stayvinci.html">Case study</a>
+          <a class="btn btn--ghost btn--sm" href="https://github.com/101feliki/stayvinci" rel="noopener">{{icon:github}} Code</a>
+        </div>
+      </article>
+
+      <article class="card project project--featured" data-tags="insurance">
+        <div class="project__top"><span class="project__kind">Insurance · ML</span><span class="badge badge--open">Open source</span></div>
+        <h3>Microinsurance Fraud Detection</h3>
+        <p>Scores each insurance claim for fraud risk, explains why it was flagged, and gives analysts a dashboard to decide.</p>
+        <ul class="project__impact">
+          <li>Plugs in front of any claims system via REST</li>
+          <li>Explainable 0–1 risk score, not a black box</li>
+        </ul>
+        <ul class="tags"><li class="tag">Express</li><li class="tag">FastAPI</li><li class="tag">PostgreSQL</li><li class="tag">React</li><li class="tag">Docker</li></ul>
+        <div class="project__links">
+          <a class="btn btn--primary btn--sm" href="projects/insurance.html#fraud">Case study</a>
+          <a class="btn btn--ghost btn--sm" href="https://github.com/101feliki/fraud-detection-system" rel="noopener">{{icon:github}} Code</a>
+        </div>
+      </article>
+
+      <article class="card project" data-tags="insurance">
+        <div class="project__top"><span class="project__kind">Insurance · Observability</span><span class="badge badge--open">Open source</span></div>
+        <h3>InsureLog</h3>
+        <p>A plug-and-play logging toolkit for insurance microservices: one dependency gives every Spring Boot service structured events.</p>
+        <ul class="project__impact">
+          <li>Automatic personal-data masking</li>
+          <li>Correlation IDs follow a customer across services</li>
+          <li>Central search, export and Grafana dashboard</li>
+        </ul>
+        <ul class="tags"><li class="tag">Java 17</li><li class="tag">Spring Boot 3</li><li class="tag">Prometheus</li><li class="tag">Grafana</li></ul>
+        <div class="project__links">
+          <a class="btn btn--primary btn--sm" href="projects/insurance.html#insurelog">Case study</a>
+          <a class="btn btn--ghost btn--sm" href="https://github.com/101feliki/java-logging-system" rel="noopener">{{icon:github}} Code</a>
+        </div>
+      </article>
+
+      <article class="card project" data-tags="insurance">
+        <div class="project__top"><span class="project__kind">Insurance · Sales</span><span class="badge badge--open">Open source</span></div>
+        <h3>Policy follow-up mailer</h3>
+        <p>Reads a client list (Excel or CSV) and sends each customer who started buying cover a personalised follow-up email.</p>
+        <ul class="project__impact">
+          <li>Skips bad, missing and duplicate rows, and says why</li>
+          <li>Everything configurable: nothing hard-coded</li>
+        </ul>
+        <ul class="tags"><li class="tag">Node.js</li><li class="tag">Nodemailer</li><li class="tag">CSV / XLSX</li></ul>
+        <div class="project__links">
+          <a class="btn btn--primary btn--sm" href="projects/insurance.html#followup">Case study</a>
+          <a class="btn btn--ghost btn--sm" href="https://github.com/101feliki/simple-email-notification-service" rel="noopener">{{icon:github}} Code</a>
+        </div>
+      </article>
+
+      <article class="card project" data-tags="work">
+        <div class="project__top"><span class="project__kind">Client · HR</span><span class="badge badge--private">{{icon:lock}} Private</span></div>
+        <h3>Training Attendance System</h3>
+        <p>Replaces a paper HR attendance form: employees sign in with a drawn signature, and finished sessions become branded PDFs on a helpdesk ticket.</p>
+        <ul class="project__impact">
+          <li>QR sign-in and an offline queue</li>
+          <li>PDF auto-attached to Freshservice</li>
+          <li>Microsoft Entra ID single sign-on</li>
+        </ul>
+        <ul class="tags"><li class="tag">Express</li><li class="tag">React</li><li class="tag">pdf-lib</li><li class="tag">MSAL</li></ul>
+        <div class="project__links"><a class="btn btn--ghost btn--sm" href="experience.html">Details in Experience</a></div>
+      </article>
+
+      <article class="card project" data-tags="work">
+        <div class="project__top"><span class="project__kind">Client · Sales ops</span><span class="badge badge--private">{{icon:lock}} Private</span></div>
+        <h3>Sales Returns Portal</h3>
+        <p>Agents log up to 500 returned items; the system builds the Excel file, raises the Freshservice request and, on approval, creates Freshsales deals.</p>
+        <ul class="project__impact">
+          <li>Webhook plus a 5-minute safety sweep: no approval missed</li>
+          <li>Bulk upsert of one deal per item</li>
+        </ul>
+        <ul class="tags"><li class="tag">Fastify</li><li class="tag">TypeScript</li><li class="tag">PostgreSQL</li></ul>
+        <div class="project__links"><a class="btn btn--ghost btn--sm" href="experience.html">Details in Experience</a></div>
+      </article>
+
+      <article class="card project" data-tags="security">
+        <div class="project__top"><span class="project__kind">Security · Tooling</span><span class="badge badge--open">Open source</span></div>
+        <h3>AEGIS</h3>
+        <p>An authorization-first, read-only assessment suite: nothing runs outside a signed scope and window, and every action is logged.</p>
+        <ul class="project__impact">
+          <li>Tamper-evident, hash-chained audit log</li>
+          <li>Zero dependencies: pure Python standard library</li>
+        </ul>
+        <ul class="tags"><li class="tag">Python</li><li class="tag">Go</li><li class="tag">Audit logging</li></ul>
+        <div class="project__links">
+          <a class="btn btn--primary btn--sm" href="projects/security.html#aegis">Case study</a>
+          <a class="btn btn--ghost btn--sm" href="https://github.com/101feliki/aegis" rel="noopener">{{icon:github}} Code</a>
+        </div>
+      </article>
+
+      <article class="card project" data-tags="security">
+        <div class="project__top"><span class="project__kind">Security · Research</span><span class="badge badge--open">Research</span></div>
+        <h3>ARTEX defence map</h3>
+        <p>A capability-by-capability breakdown of an open-source AI pentest platform, written to build detection and defence services for Kenyan banks.</p>
+        <ul class="project__impact">
+          <li>Ten segments, from recon to evidence reporting</li>
+          <li>Each with the defensive signals to watch for</li>
+        </ul>
+        <ul class="tags"><li class="tag">Threat modelling</li><li class="tag">Go</li><li class="tag">Detection</li></ul>
+        <div class="project__links">
+          <a class="btn btn--primary btn--sm" href="projects/security.html#artex">Case study</a>
+          <a class="btn btn--ghost btn--sm" href="https://github.com/101feliki/aegis/blob/main/INDEX.md" rel="noopener">{{icon:github}} Read the map</a>
+        </div>
+      </article>
+
+      <article class="card project" data-tags="platform">
+        <div class="project__top"><span class="project__kind">Communications</span><span class="badge badge--open">Open source</span></div>
+        <h3>Customer Care Notification System</h3>
+        <p>Reach customers by email and SMS: one-off messages, bulk campaigns from CSV lists, templates, and delivery tracking in one dashboard.</p>
+        <ul class="tags"><li class="tag">NestJS</li><li class="tag">Prisma</li><li class="tag">PostgreSQL</li><li class="tag">React</li></ul>
+        <div class="project__links"><a class="btn btn--ghost btn--sm" href="https://github.com/101feliki/customer-care-system" rel="noopener">{{icon:github}} Code</a></div>
+      </article>
+
+      <article class="card project" data-tags="work platform">
+        <div class="project__top"><span class="project__kind">Client · Real estate</span><span class="badge badge--open">Open source</span></div>
+        <h3>BlueVision Realtors</h3>
+        <p>Website for a Kenyan land specialist helping local buyers and Kenyans abroad find and buy verified land.</p>
+        <ul class="tags"><li class="tag">React</li><li class="tag">TypeScript</li><li class="tag">Vite</li><li class="tag">Tailwind</li><li class="tag">Render</li></ul>
+        <div class="project__links"><a class="btn btn--ghost btn--sm" href="https://github.com/101feliki/bluevision-realtors" rel="noopener">{{icon:github}} Code</a></div>
+      </article>
+
+      <article class="card project" data-tags="platform security">
+        <div class="project__top"><span class="project__kind">Blockchain · AI</span><span class="badge badge--open">Open source</span></div>
+        <h3>Blokichain voting</h3>
+        <p>Polls and votes live on an Ethereum smart contract so results can't be tampered with; an AI service flags unusual voting patterns.</p>
+        <ul class="tags"><li class="tag">Solidity</li><li class="tag">Node.js</li><li class="tag">React</li><li class="tag">Python</li></ul>
+        <div class="project__links"><a class="btn btn--ghost btn--sm" href="https://github.com/101feliki/blokichain" rel="noopener">{{icon:github}} Code</a></div>
+      </article>
+
+      <article class="card project" data-tags="platform">
+        <div class="project__top"><span class="project__kind">AI · Data</span><span class="badge badge--open">Open source</span></div>
+        <h3>Plain-English SQL route</h3>
+        <p>A Next.js API route on Supabase that turns "How many orders this week?" into a read-only SQL query, using the real schema as context.</p>
+        <ul class="tags"><li class="tag">Next.js</li><li class="tag">Supabase</li><li class="tag">OpenAI</li></ul>
+        <div class="project__links"><a class="btn btn--ghost btn--sm" href="https://github.com/101feliki/supabase-supabase-embedded-dashboard" rel="noopener">{{icon:github}} Code</a></div>
+      </article>
+
+      <article class="card project" data-tags="learning">
+        <div class="project__top"><span class="project__kind">Certification</span><span class="badge badge--open">Open source</span></div>
+        <h3>freeCodeCamp back-end projects</h3>
+        <p>The five projects for the Back End Development and APIs certification: a timestamp microservice, chat app, watchlist API with JWT and more.</p>
+        <ul class="tags"><li class="tag">Node.js</li><li class="tag">Express</li><li class="tag">JWT</li></ul>
+        <div class="project__links"><a class="btn btn--ghost btn--sm" href="https://github.com/101feliki/fcc-backend-certification-projects" rel="noopener">{{icon:github}} Code</a></div>
+      </article>
+
+    </div>
+  </div>
+</section>

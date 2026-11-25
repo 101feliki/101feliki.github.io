@@ -1,0 +1,85 @@
+<!-- {"title": "Stayvinci", "description": "Case study: Stayvinci, a multi-tenant booking and storefront platform Felix Kariuki is building with NestJS, Drizzle and PostgreSQL row-level security.", "nav": "projects"} -->
+<section class="case-hero">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="../projects.html">Projects</a> / <span>Stayvinci</span></nav>
+    <span class="eyebrow">Case study · My own product</span>
+    <h1>Stayvinci: a premium, multi-tenant booking and storefront platform</h1>
+    <p class="lead">Stayvinci lets hospitality and service businesses ("Houses") run bookings and a storefront under their own brand, while guests discover and book them. I'm building the whole platform, from the database to the apps.</p>
+    <div class="btns">
+      <a class="btn btn--primary" href="https://github.com/101feliki/stayvinci" rel="noopener">{{icon:github}} View the code</a>
+      <span class="badge badge--open" style="align-self:center">In active development</span>
+    </div>
+    <div class="facts">
+      <div class="fact"><small>Role</small><span>Founder &amp; lead engineer</span></div>
+      <div class="fact"><small>Backend</small><span>NestJS · Drizzle · PostgreSQL</span></div>
+      <div class="fact"><small>Apps</small><span>React web apps · Expo (planned)</span></div>
+      <div class="fact"><small>Tooling</small><span>pnpm · Turborepo · typed SDK</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap case">
+    <nav class="toc" aria-label="On this page">
+      <a href="#why">Why I'm building it</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#tenancy">Tenant isolation</a>
+      <a href="#product">Product journey</a>
+      <a href="#quality">Quality</a>
+      <a href="#next">What's next</a>
+    </nav>
+    <div class="case__body">
+      <section id="why">
+        <h2>Why I'm building it</h2>
+        <p>I wanted to build a platform end to end, from a product specification to the database policies, and to solve a problem I care about: giving each business its own discreet, branded store, payments to its own merchant account, and staff roles, while sharing one well-run infrastructure.</p>
+      </section>
+
+      <section id="architecture">
+        <h2>Architecture</h2>
+        <div class="flow" aria-label="Architecture"><span>Guest app</span><span>Business app</span><span>Admin console</span><span>Website</span><i>→</i><span>Typed SDK</span><i>→</i><span>NestJS API</span><i>→</i><span>PostgreSQL + RLS</span></div>
+        <ul>
+          <li>One <b>NestJS API</b> (Swagger at <code>/docs</code>) serves four apps from a <b>Turborepo monorepo</b>.</li>
+          <li>Shared packages: request/response schemas and roles, a typed API client (SDK), a design system, and lint/TypeScript presets, so the apps and API can't drift apart.</li>
+          <li>Runs on <b>PGlite</b> (PostgreSQL in WebAssembly) for zero-install development, or PostgreSQL 16, Redis and Mailpit through Docker Compose.</li>
+        </ul>
+      </section>
+
+      <section id="tenancy">
+        <h2>Tenant isolation</h2>
+        <p>In a multi-tenant system, the worst bug is one business seeing another's bookings. So isolation is enforced <b>in the database</b> with PostgreSQL row-level security, not only in application code: even a query that forgets its filter can only see the current tenant's rows.</p>
+        <ul>
+          <li>Separate platform roles (Stayvinci staff) and tenant roles (inside a House), with explicit permission rules.</li>
+          <li>Sensitive fields encrypted with a dedicated data-encryption key; sign-in codes hashed with a server-side pepper.</li>
+          <li>Passwordless sign-in by email link (SMS planned).</li>
+        </ul>
+      </section>
+
+      <section id="product">
+        <h2>Product journey</h2>
+        <p>The specification walks a business through every stage, each with its states and edge cases:</p>
+        <ul>
+          <li>Joining: plan, agreement and account.</li>
+          <li>Connecting their own merchant account for payments, with neutral descriptors, marketplace fees, refunds and reconciliation.</li>
+          <li>Verification with Kenya-specific requirements by business type.</li>
+          <li>Store setup with a guided checklist, then bookings from guests.</li>
+        </ul>
+        <p>Thirty showcase stores are seeded so the full flow can be demonstrated and tested end to end, and stores can be bulk-imported from JSON.</p>
+      </section>
+
+      <section id="quality">
+        <h2>Quality</h2>
+        <p>Every change passes one command: <code>pnpm lint &amp;&amp; pnpm typecheck &amp;&amp; pnpm test &amp;&amp; pnpm build</code>, with conventional commits enforced.</p>
+      </section>
+
+      <section id="next">
+        <h2>What's next</h2>
+        <p>Wiring the remaining apps to the API, the Expo mobile guest app, and onboarding the first paying businesses. Launching Stayvinci is one of my <a href="../goals.html">main goals</a>.</p>
+      </section>
+
+      <nav class="pager" aria-label="More case studies">
+        <a href="mustek.html"><small>Previous</small><b>Mustek East Africa</b></a>
+        <a href="insurance.html"><small>Next case study</small><b>Insurance technology</b></a>
+      </nav>
+    </div>
+  </div>
+</section>

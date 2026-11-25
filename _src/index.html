@@ -1,0 +1,132 @@
+<!-- {"title": "Felix Kariuki · Backend engineer", "description": "Felix Kariuki, backend engineer in Nairobi. I build secure, well-tested APIs and the systems around them: e-commerce, booking platforms, insurance services and business automation.", "nav": "home"} -->
+<section class="hero">
+  <div class="wrap hero__grid">
+    <div>
+      <span class="eyebrow">Backend engineer · Nairobi, Kenya</span>
+      <h1>I build the <span class="grad">backends businesses run on</span>: secure, tested and easy to operate.</h1>
+      <p class="lead">
+        I'm Felix Kariuki, a backend engineer at BCK Inno Works. I design APIs, databases and the servers they run on,
+        then the parts most people skip: security monitoring, backups, privacy and documentation. I've built systems for
+        a hardware distributor and for a manufacturer's HR and sales teams, and I'm building my own booking platform, Stayvinci.
+      </p>
+      <div class="btns">
+        <a class="btn btn--primary" href="projects.html">See what I've built {{icon:arrow}}</a>
+        <a class="btn btn--ghost" href="contact.html">Get in touch</a>
+      </div>
+      <div class="hero__meta">
+        <span><i class="status-dot" aria-hidden="true"></i> Open to backend roles: relocation, hybrid or on-site</span>
+        <span>BSc Computer Science, Zetech University</span>
+      </div>
+    </div>
+    <div class="term" aria-label="A summary of how I work, written as code">
+      <div class="term__bar"><i></i><i></i><i></i><b>felix.ts</b></div>
+      <pre><span class="k">const</span> felix = {
+  role: <span class="s">'Backend engineer'</span>,
+  stack: [<span class="s">'Node.js'</span>, <span class="s">'TypeScript'</span>, <span class="s">'PostgreSQL'</span>,
+          <span class="s">'NestJS'</span>, <span class="s">'Express'</span>, <span class="s">'Docker'</span>],
+  ships: {
+    tests: <span class="k">true</span>,        <span class="c">// before every deploy</span>
+    apiDocs: <span class="s">'OpenAPI'</span>,
+    security: <span class="s">'built in, not bolted on'</span>,
+    privacy: <span class="s">'consent first'</span>,
+  },
+  next: [<span class="s">'Launch Stayvinci'</span>, <span class="s">'Platform engineering'</span>],
+}</pre>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <div class="stats reveal">
+      <div class="stat"><b>12+</b><span>systems designed and built</span></div>
+      <div class="stat"><b>2</b><span>client companies served at BCK Inno Works</span></div>
+      <div class="stat"><b>76</b><span>automated tests guarding one API alone</span></div>
+      <div class="stat"><b>3</b><span>insurance services: fraud, logging, follow-ups</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="eyebrow">Featured work</span>
+        <h2>Projects I'm proudest of</h2>
+      </div>
+      <a class="btn btn--ghost btn--sm" href="projects.html">All projects {{icon:arrow}}</a>
+    </div>
+    <div class="grid grid--3">
+      <article class="card card--link project project--featured reveal">
+        <div class="project__top"><span class="project__kind">E-commerce API</span><span class="badge badge--live">Live</span></div>
+        <h3><a href="projects/mustek.html">Mustek East Africa platform</a></h3>
+        <p>The API, security dashboard and operations behind a hardware distributor's website: catalogue, orders, careers and consent-based personalisation.</p>
+        <ul class="tags"><li class="tag">Express 5</li><li class="tag">PostgreSQL</li><li class="tag">Docker</li><li class="tag">nginx</li></ul>
+      </article>
+      <article class="card card--link project reveal">
+        <div class="project__top"><span class="project__kind">SaaS platform</span><span class="badge badge--open">Building</span></div>
+        <h3><a href="projects/stayvinci.html">Stayvinci</a></h3>
+        <p>A multi-tenant booking and storefront platform: one API, a guest app, a business app, an admin console and a website, in one monorepo.</p>
+        <ul class="tags"><li class="tag">NestJS</li><li class="tag">Drizzle</li><li class="tag">PostgreSQL RLS</li><li class="tag">Turborepo</li></ul>
+      </article>
+      <article class="card card--link project reveal">
+        <div class="project__top"><span class="project__kind">Security</span><span class="badge badge--open">Open source</span></div>
+        <h3><a href="projects/security.html">AEGIS &amp; ARTEX defence map</a></h3>
+        <p>An authorization-first, read-only assessment suite with a tamper-evident audit log, and a defence map of an AI pentest tool for Kenyan banks.</p>
+        <ul class="tags"><li class="tag">Python</li><li class="tag">Go</li><li class="tag">Threat modelling</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="band reveal">
+      <div class="band__grid">
+        <div>
+          <span class="eyebrow">Insurance technology</span>
+          <h2>Software for insurers: catch fraud, trace every customer, finish every sale</h2>
+          <p>Three services built for how microinsurance actually works: claims checked before they're paid, events traced across services with personal data masked, and unfinished applications followed up.</p>
+          <a class="btn btn--primary" href="projects/insurance.html">Read the insurance case study {{icon:arrow}}</a>
+        </div>
+        <div class="band__list">
+          <a class="band__item" href="projects/insurance.html#fraud"><span class="band__num">01</span><span><b>Microinsurance Fraud Detection</b><span>Scores each claim 0–1, explains why it was flagged, and gives analysts a review dashboard.</span></span></a>
+          <a class="band__item" href="projects/insurance.html#insurelog"><span class="band__num">02</span><span><b>InsureLog</b><span>Drop-in Spring Boot logging: insurance events, automatic PII masking, correlation IDs, Grafana.</span></span></a>
+          <a class="band__item" href="projects/insurance.html#followup"><span class="band__num">03</span><span><b>Policy follow-up mailer</b><span>Personalised emails to customers who started buying cover but didn't finish.</span></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap grid grid--2" style="align-items:start">
+    <div class="reveal">
+      <span class="eyebrow">How I work</span>
+      <h2>Production is the starting line, not the finish</h2>
+      <p>Anyone can make an API return JSON. What I care about is what happens after launch: will it hold under load, will a bad query take it down, will we know when someone attacks it, can a new developer run it from the README, and can we restore it if the server dies?</p>
+      <a class="btn btn--ghost btn--sm" href="about.html">More about me {{icon:arrow}}</a>
+    </div>
+    <div class="grid grid--2">
+      <div class="card reveal"><h4>Secure by default</h4><p class="small">Parameterised SQL, least-privilege database accounts, query time limits, rate limits, role-based access and audit logs.</p></div>
+      <div class="card reveal"><h4>Tested</h4><p class="small">Integration tests against a real database. Nothing is committed or deployed unless every test passes.</p></div>
+      <div class="card reveal"><h4>Documented</h4><p class="small">OpenAPI/Swagger for every endpoint, plain-English READMEs, and a runbook for moving to a new server.</p></div>
+      <div class="card reveal"><h4>Privacy-aware</h4><p class="small">Kenya Data Protection Act in mind: consent before tracking, data deleted on schedule, CVs never public.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <div class="cta reveal">
+      <div>
+        <h2>Hiring a backend engineer, or need a system built?</h2>
+        <p>I'm open to backend and platform roles: relocation, hybrid or on-site.</p>
+      </div>
+      <div class="btns">
+        <a class="btn btn--primary" href="contact.html">Contact me</a>
+        <a class="btn btn--ghost" href="experience.html">View experience</a>
+      </div>
+    </div>
+  </div>
+</section>

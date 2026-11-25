@@ -1,0 +1,104 @@
+<!-- {"title": "Mustek East Africa platform", "description": "Case study: the API, security dashboard and production operations Felix Kariuki built for Mustek East Africa's website.", "nav": "projects"} -->
+<section class="case-hero">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="../projects.html">Projects</a> / <span>Mustek East Africa</span></nav>
+    <span class="eyebrow">Case study · Client work at BCK Inno Works</span>
+    <h1>Mustek East Africa: the backend behind a hardware distributor's website</h1>
+    <p class="lead">Mustek sells POS systems, coffee machines, UPS and solar products across East Africa. I built and run the API, the admin back-end, the security monitoring and the production server behind their website.</p>
+    <div class="btns">
+      <a class="btn btn--primary" href="https://mustekea.jasco.co.ke" rel="noopener">Visit the live site {{icon:external}}</a>
+      <span class="badge badge--private" style="align-self:center">{{icon:lock}} Code is private (client)</span>
+    </div>
+    <div class="facts">
+      <div class="fact"><small>Role</small><span>Backend engineer, owner of API &amp; server</span></div>
+      <div class="fact"><small>Stack</small><span>Node 22 · Express 5 · PostgreSQL 17</span></div>
+      <div class="fact"><small>Hosting</small><span>DigitalOcean · Docker · nginx · pm2</span></div>
+      <div class="fact"><small>Quality</small><span>76 integration tests, OpenAPI docs</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap case">
+    <nav class="toc" aria-label="On this page">
+      <a href="#problem">The problem</a>
+      <a href="#built">What I built</a>
+      <a href="#security">Security</a>
+      <a href="#performance">Performance</a>
+      <a href="#privacy">Privacy &amp; personalisation</a>
+      <a href="#ops">Operations</a>
+      <a href="#learned">What I learned</a>
+    </nav>
+    <div class="case__body">
+      <section id="problem">
+        <h2>The problem</h2>
+        <p>Mustek needed a new website where customers could browse the catalogue, order and get a quote, and where staff could manage products, read orders and publish content, all on a small shared server and without a dedicated operations team.</p>
+        <div class="flow" aria-label="Architecture"><span>React site &amp; admin</span><i>→</i><span>nginx (TLS)</span><i>→</i><span>Express 5 API</span><i>→</i><span>PostgreSQL 17</span><i>+</i><span>WebP image pipeline</span><i>+</i><span>Email alerts</span></div>
+      </section>
+
+      <section id="built">
+        <h2>What I built</h2>
+        <ul>
+          <li><b>Catalogue API</b>: categories, products with galleries and specifications, bulk import (500 rows, all-or-nothing with per-row errors), and paged search with cached answers.</li>
+          <li><b>Orders and enquiries</b>: trolley orders and quotes saved for the sales team, an email alert to sales, and a branded confirmation email to the customer.</li>
+          <li><b>Careers</b>: vacancies that close on their own after the closing day (Nairobi time), searchable by words, department, location and type, and job applications with CV upload, confirmation emails and an HR-only review list.</li>
+          <li><b>Staff roles</b>: admin, sales, marketing and HR, each with exact permissions; every change goes into an audit log.</li>
+          <li><b>Editable policy pages</b>: warranty, privacy and cookie policies written for what the site actually does.</li>
+        </ul>
+      </section>
+
+      <section id="security">
+        <h2>Security</h2>
+        <ul>
+          <li>A <b>security dashboard</b> with an IP-geolocation attack map, failed-login tracking, probe detection and email alerts for crashes, expiring certificates, missing backups and full disks.</li>
+          <li>SQL injection defence in depth: parameterised queries, table and column names only from fixed lists, input validation with Zod, and a dedicated injection test.</li>
+          <li>The API connects as a <b>least-privilege database account</b> that can read and write rows but cannot drop or alter tables; a <b>10-second query limit</b> stops runaway queries.</li>
+          <li>CVs are stored outside the public folder, checked by their file contents (not their names), downloadable only by HR, and each download is audited.</li>
+        </ul>
+        <p class="callout"><b>Why it matters:</b> even if a bug slipped through, a stolen request couldn't drop a table, a slow query couldn't freeze the site, and an attack would show up on the dashboard.</p>
+      </section>
+
+      <section id="performance">
+        <h2>Performance</h2>
+        <ul>
+          <li>Measured the site on a phone first: about 11 MB on the home page, most of it video and images.</li>
+          <li>Built an automatic <b>WebP pipeline</b>: every uploaded photo gets a full-size and a 400&nbsp;px copy, served only to browsers that accept WebP. Photos became about <b>77% smaller</b>, thumbnails <b>92% smaller</b> (around 3 KB).</li>
+          <li>The whole catalogue is served from memory, pre-compressed with gzip and Brotli, and rebuilt only when staff change something.</li>
+        </ul>
+      </section>
+
+      <section id="privacy">
+        <h2>Privacy &amp; personalisation</h2>
+        <p>The client wanted search to show each customer what they're interested in first. Tracking people who decline would break Kenya's Data Protection Act, so I designed it with consent at the centre:</p>
+        <ul>
+          <li><b>Everyone</b> gets "popular first", from anonymous per-product counts with no identifier and no IP address stored.</li>
+          <li><b>Only visitors who click Accept</b> get personal ranking, from what they view, add and search for.</li>
+          <li>Choosing "Essential only" later <b>deletes that history immediately</b>; everything else expires after 12 months.</li>
+        </ul>
+      </section>
+
+      <section id="ops">
+        <h2>Operations</h2>
+        <ul>
+          <li>Runs on a 2 GB DigitalOcean server shared with other apps: Docker for PostgreSQL, pm2 with a memory cap, nginx with TLS.</li>
+          <li>Nightly database and upload backups, a one-command deploy that backs up, pulls, migrates, restarts and health-checks, and a read-only server checker that lists anything missing.</li>
+          <li>A written runbook so the whole system can move to a new server with nothing left out.</li>
+        </ul>
+      </section>
+
+      <section id="learned">
+        <h2>What I learned</h2>
+        <ul>
+          <li>Deploy scripts need tests too: a backup script that stopped on one missing setting taught me to make every optional setting truly optional.</li>
+          <li>Measuring first (page weight on a real phone) points straight at the fixes that matter.</li>
+          <li>Saying "no, but here's how" to a request that breaks the law builds more trust than saying yes.</li>
+        </ul>
+      </section>
+
+      <nav class="pager" aria-label="More case studies">
+        <a href="../projects.html"><small>Back to</small><b>All projects</b></a>
+        <a href="stayvinci.html"><small>Next case study</small><b>Stayvinci</b></a>
+      </nav>
+    </div>
+  </div>
+</section>

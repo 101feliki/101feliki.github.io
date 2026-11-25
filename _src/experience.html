@@ -1,0 +1,88 @@
+<!-- {"title": "Experience", "description": "Felix Kariuki's experience: backend engineer at BCK Inno Works (Mustek East Africa, Movit), founder of Stayvinci, and independent insurance, security and web projects.", "nav": "experience"} -->
+<section class="case-hero">
+  <div class="wrap">
+    <span class="eyebrow">Experience</span>
+    <h1>Where I've worked and what I delivered</h1>
+    <p class="lead">Each role below lists what I was responsible for and what changed because of it. Client systems are private, so I describe them without code or secrets.</p>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <div class="timeline">
+
+      <article class="card tl reveal">
+        <div class="tl__head">
+          <div><h3>BCK Inno Works</h3><span class="tl__role">Backend Engineer</span></div>
+          <span class="tl__when">Current · Nairobi</span>
+        </div>
+        <p>A software house building custom systems for client companies. I own the backend and the production servers for my projects.</p>
+
+        <h4 style="margin-top:14px">Mustek East Africa: website platform</h4>
+        <ul>
+          <li>Designed and built the Express 5 / PostgreSQL API behind the website and admin portal: catalogue, orders, enquiries, blog, careers and job applications.</li>
+          <li>Built staff roles (admin, sales, marketing, HR) with per-permission checks, an audit log, and a security dashboard with an IP-geolocation attack map and email alerts.</li>
+          <li>Hardened the database: a least-privilege account for the API, query time limits and an injection test suite, so one bad query can't take the site down or drop a table.</li>
+          <li>Cut product photo weight by about <b>77%</b> (thumbnails <b>92%</b>) with an automatic WebP pipeline.</li>
+          <li>Added consent-based personalisation that complies with Kenya's Data Protection Act: anonymous popularity for everyone, personal ranking only after "Accept", deleted on withdrawal.</li>
+          <li>Run the production server: Docker, nginx, pm2, TLS, nightly backups, and a written runbook so the system can move to a new server with nothing left out. <b>76</b> automated tests gate every deploy.</li>
+        </ul>
+        <a class="btn btn--ghost btn--sm" href="projects/mustek.html">Mustek case study {{icon:arrow}}</a>
+
+        <h4 style="margin-top:20px">Movit: HR and sales systems</h4>
+        <ul>
+          <li><b>Training Attendance System:</b> replaced a paper HR form with role-based accounts, drawn signatures, QR sign-in and an offline queue; finished sessions become a branded PDF attached to a Freshservice ticket automatically.</li>
+          <li><b>Sales Returns Portal:</b> agents record up to 500 returned items; the system builds the Excel file, raises the Freshservice request, and once approved creates one Freshsales deal per item.</li>
+          <li>Single sign-on with Microsoft Entra ID (MSAL) and webhook processing with a 5-minute safety sweep, so no approval is missed.</li>
+        </ul>
+      </article>
+
+      <article class="card tl tl--green reveal">
+        <div class="tl__head">
+          <div><h3>Stayvinci</h3><span class="tl__role">Founder &amp; lead engineer</span></div>
+          <span class="tl__when">Ongoing</span>
+        </div>
+        <p>My own premium, multi-tenant booking and storefront platform.</p>
+        <ul>
+          <li>One NestJS API serving four apps (guest PWA, business app, admin console, marketing site) from a Turborepo monorepo.</li>
+          <li>Tenant isolation enforced by PostgreSQL row-level security, not just application code; encrypted sensitive data and OTP sign-in.</li>
+          <li>Seeded with 30 showcase stores to demo and test the full flow end to end.</li>
+        </ul>
+        <a class="btn btn--ghost btn--sm" href="projects/stayvinci.html">Stayvinci case study {{icon:arrow}}</a>
+      </article>
+
+      <article class="card tl reveal">
+        <div class="tl__head">
+          <div><h3>Independent projects</h3><span class="tl__role">Insurance technology, security &amp; web</span></div>
+          <span class="tl__when">Ongoing</span>
+        </div>
+        <ul>
+          <li><b>Insurance:</b> a microinsurance fraud detection service (Express + FastAPI ML scoring), InsureLog for Spring Boot microservices, and a policy follow-up mailer. <a href="projects/insurance.html">Case study</a></li>
+          <li><b>Security:</b> AEGIS, an authorization-first assessment suite with a hash-chained audit log, and a defence map of an AI pentest platform for Kenyan banks. <a href="projects/security.html">Case study</a></li>
+          <li><b>Web:</b> the BlueVision Realtors website for a Kenyan land specialist; a customer-care notification platform (email + SMS campaigns); a blockchain voting app with AI anomaly checks.</li>
+        </ul>
+      </article>
+
+      <article class="card tl tl--green reveal">
+        <div class="tl__head">
+          <div><h3>Education</h3><span class="tl__role">Zetech University · freeCodeCamp</span></div>
+          <span class="tl__when">In progress · Nov 2026</span>
+        </div>
+        <ul>
+          <li>BSc Computer Science, Zetech University (in progress).</li>
+          <li>freeCodeCamp Back End Development and APIs certification (November 2026): five certification projects in Node.js. <a href="https://github.com/101feliki/fcc-backend-certification-projects">View them</a></li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap">
+    <div class="cta reveal">
+      <div><h2>Want the details?</h2><p>The case studies show the problems, decisions and results behind each role.</p></div>
+      <div class="btns"><a class="btn btn--primary" href="projects.html">Browse projects</a><a class="btn btn--ghost" href="contact.html">Contact</a></div>
+    </div>
+  </div>
+</section>
