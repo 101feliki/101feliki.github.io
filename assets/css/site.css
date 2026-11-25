@@ -927,3 +927,21 @@ code { font-family: ui-monospace, 'JetBrains Mono', Consolas, monospace; font-si
   .stack-nav__rail span { writing-mode: horizontal-tb; transform: none; }
 }
 @media (prefers-reduced-motion: reduce) { .stack-nav__links a span, .stack-nav__links a::after { transition: none; } }
+
+/* Layered cut-corner cards on the What's next page (same style as the Home services). */
+.svc-row--goals { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 56px 40px; padding-top: 26px; }
+.svc-row--goals .svc__body { padding: 48px 30px 52px; gap: 10px; }
+.svc-row--goals .svc__body > b { font-size: 1.2rem; }
+.svc-row--goals .svc__badge b { font-size: 0.95rem; font-weight: 800; letter-spacing: -0.02em; }
+.svc-row--goals .goal__when { color: var(--ember); }
+.svc-row--goals .svc--on .goal__when { color: var(--pop-ink); opacity: 0.75; }
+.svc-row--goals .project__impact { margin-top: 4px; }
+.svc-row--goals .svc--on .project__impact li { color: var(--pop-ink); }
+.svc-row--goals .svc--on .project__impact li::before { background: var(--pop-ink); }
+.svc-row--goals .svc__pill:hover { border-color: var(--ember); color: var(--ember); }
+@media (max-width: 760px) { .svc-row--goals { grid-template-columns: 1fr; } }
+
+/* Layered cards: badge text keeps the badge colour; the body always fills the card height. */
+.svc-row .svc .svc__badge b { color: inherit; }
+.svc-row .svc { display: flex; flex-direction: column; }
+.svc-row .svc .svc__body { flex: 1; }
