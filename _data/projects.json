@@ -8,7 +8,7 @@
       "summary": "API, admin back-end, security dashboard and operations for a hardware distributor's website.",
       "value": "Lets customers browse, order and request quotes around the clock, sends every order straight to sales, and keeps the business protected, monitored and recoverable.",
       "impact": [
-        "76 automated tests gate every deploy",
+        "Automated tests gate every deploy",
         "Photos 77% lighter with a WebP pipeline",
         "Consent-based personalisation, careers with CV upload"
       ],
@@ -29,8 +29,8 @@
         "headline": "Powering Mustek's online store",
         "tagline": "Catalogue · Orders · Careers · Security",
         "stat": [
-          "76",
-          "automated tests"
+          "Live",
+          "in production"
         ],
         "mockup": "assets/img/shots/mustek-api.webp"
       },
