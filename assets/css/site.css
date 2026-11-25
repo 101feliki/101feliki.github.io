@@ -1009,4 +1009,4 @@ code { font-family: ui-monospace, 'JetBrains Mono', Consolas, monospace; font-si
 @media (prefers-color-scheme: light) { :root:not([data-theme='dark']) .integ__item { outline: 0; background: repeating-linear-gradient(135deg, rgba(15, 20, 25, 0.035) 0 1px, transparent 1px 14px), #f3f5f8; } }
 
 /* Ten integrations: five across on wide screens. */
-@media (min-width: 1100px) { .integ { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+@media (min-width: 961px) { .integ__item--wide { grid-column: span 2; } }
