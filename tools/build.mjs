@@ -218,7 +218,7 @@ ${expand(projectCards(body, up)).trim()}
       <nav aria-label="Elsewhere">
         <a href="https://github.com/101feliki" rel="me">GitHub</a>
         <a href="https://gitlab.com/felixwachirakariuki" rel="me">GitLab</a>
-        <a href="https://linkedin.com/in/felix-wachira-569297296" rel="me">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/felix-wachira" rel="me">LinkedIn</a>
         <a href="mailto:felixwachirakariuki@gmail.com">Email</a>
       </nav>
     </div>
