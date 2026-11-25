@@ -11,6 +11,25 @@ if (menu) {
   document.querySelectorAll('.nav a').forEach((a) => a.addEventListener('click', () => document.body.classList.remove('nav-open')))
 }
 
+// Theme toggle: flips light/dark. Choosing the same as the device setting forgets the choice,
+// so the site follows the device again (the inline script in <head> applies a saved choice).
+const themeBtn = document.querySelector('.theme-btn')
+if (themeBtn) {
+  const system = () => (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
+  themeBtn.addEventListener('click', () => {
+    const now = document.documentElement.dataset.theme || system()
+    const next = now === 'light' ? 'dark' : 'light'
+    try {
+      if (next === system()) localStorage.removeItem('theme')
+      else localStorage.setItem('theme', next)
+    } catch {
+      // Storage blocked: the choice lasts for this page only.
+    }
+    if (next === system()) delete document.documentElement.dataset.theme
+    else document.documentElement.dataset.theme = next
+  })
+}
+
 // Project filters (projects.html): buttons with data-filter, cards with data-tags="work insurance …"
 const filters = document.querySelectorAll('.filter')
 const cards = document.querySelectorAll('[data-tags]')

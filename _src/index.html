@@ -1,38 +1,45 @@
-<!-- {"title": "Felix Kariuki · Backend engineer", "description": "Felix Kariuki, backend engineer in Nairobi. I build secure, well-tested APIs and the systems around them: e-commerce, booking platforms, insurance services and business automation.", "nav": "home"} -->
+<!-- {"title": "Felix Kariuki · Backend & DevOps engineer", "description": "Felix Kariuki, backend and DevOps engineer in Nairobi. I build secure, tested APIs and run them in production: Docker, nginx, CI/CD, monitoring and backups.", "nav": "home"} -->
 <section class="hero">
   <div class="wrap hero__grid">
     <div>
-      <span class="eyebrow">Backend engineer · Nairobi, Kenya</span>
-      <h1>I build the <span class="grad">backends businesses run on</span>: secure, tested and easy to operate.</h1>
+      <span class="eyebrow">Backend &amp; DevOps engineer · Nairobi, Kenya</span>
+      <h1>I build backends <span class="grad">and run them in production</span>: secure, tested and easy to operate.</h1>
       <p class="lead">
-        I'm Felix Kariuki, a backend engineer at BCK Inno Works. I design APIs, databases and the servers they run on,
-        then the parts most people skip: security monitoring, backups, privacy and documentation. I've built systems for
-        a hardware distributor and for a manufacturer's HR and sales teams, and I'm building my own booking platform, Stayvinci.
+        I'm Felix Kariuki, a backend and DevOps engineer at BCK Inno Works. I design APIs and databases, then deploy and
+        run them myself: Docker, nginx, TLS, CI, monitoring, alerts and backups. I've delivered systems for a hardware
+        distributor and a manufacturer's HR and sales teams, and I'm building my own booking platform, Stayvinci.
       </p>
       <div class="btns">
         <a class="btn btn--primary" href="projects.html">See what I've built {{icon:arrow}}</a>
-        <a class="btn btn--ghost" href="contact.html">Get in touch</a>
+        <a class="btn btn--ghost" href="services.html">Work with me</a>
       </div>
       <div class="hero__meta">
-        <span><i class="status-dot" aria-hidden="true"></i> Open to backend roles: relocation, hybrid or on-site</span>
-        <span>BSc Computer Science, Zetech University</span>
+        <span><i class="status-dot" aria-hidden="true"></i> Available: full-time roles and client projects</span>
+        <span>Relocation, hybrid or on-site</span>
       </div>
     </div>
-    <div class="term" aria-label="A summary of how I work, written as code">
-      <div class="term__bar"><i></i><i></i><i></i><b>felix.ts</b></div>
-      <pre><span class="k">const</span> felix = {
-  role: <span class="s">'Backend engineer'</span>,
-  stack: [<span class="s">'Node.js'</span>, <span class="s">'TypeScript'</span>, <span class="s">'PostgreSQL'</span>,
-          <span class="s">'NestJS'</span>, <span class="s">'Express'</span>, <span class="s">'Docker'</span>],
-  ships: {
-    tests: <span class="k">true</span>,        <span class="c">// before every deploy</span>
-    apiDocs: <span class="s">'OpenAPI'</span>,
-    security: <span class="s">'built in, not bolted on'</span>,
-    privacy: <span class="s">'consent first'</span>,
-  },
-  next: [<span class="s">'Launch Stayvinci'</span>, <span class="s">'Platform engineering'</span>],
-}</pre>
-    </div>
+
+    <aside class="profile reveal" aria-label="Felix Kariuki at a glance">
+      <picture>
+        <source srcset="assets/img/felix.webp" type="image/webp">
+        <img class="profile__photo" src="assets/img/felix.jpg" width="720" height="900" alt="Felix Kariuki, backend and DevOps engineer" fetchpriority="high">
+      </picture>
+      <div class="profile__card">
+        <div class="profile__name"><b>Felix Kariuki</b><span>Backend &amp; DevOps engineer</span></div>
+        <ul class="profile__facts">
+          <li><span>Builds</span><b>APIs, databases, integrations</b></li>
+          <li><span>Runs</span><b>Docker, nginx, Linux, CI/CD</b></li>
+          <li><span>Secures</span><b>Least privilege, audit logs, monitoring</b></li>
+          <li><span>Based</span><b>Nairobi · UTC+3</b></li>
+        </ul>
+        <div class="profile__links">
+          <a href="https://github.com/101feliki" aria-label="GitHub">{{icon:github}}</a>
+          <a href="https://linkedin.com/in/felix-wachira-569297296" aria-label="LinkedIn">{{icon:linkedin}}</a>
+          <a href="https://gitlab.com/felixwachirakariuki" aria-label="GitLab">{{icon:gitlab}}</a>
+          <a href="mailto:felixwachirakariuki@gmail.com" aria-label="Email">{{icon:mail}}</a>
+        </div>
+      </div>
+    </aside>
   </div>
 </section>
 
@@ -42,7 +49,7 @@
       <div class="stat"><b>12+</b><span>systems designed and built</span></div>
       <div class="stat"><b>2</b><span>client companies served at BCK Inno Works</span></div>
       <div class="stat"><b>76</b><span>automated tests guarding one API alone</span></div>
-      <div class="stat"><b>3</b><span>insurance services: fraud, logging, follow-ups</span></div>
+      <div class="stat"><b>1 command</b><span>to back up, deploy, migrate and health-check</span></div>
     </div>
   </div>
 </section>
@@ -75,6 +82,45 @@
         <p>An authorization-first, read-only assessment suite with a tamper-evident audit log, and a defence map of an AI pentest tool for Kenyan banks.</p>
         <ul class="tags"><li class="tag">Python</li><li class="tag">Go</li><li class="tag">Threat modelling</li></ul>
       </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="devops">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="eyebrow">DevOps</span>
+        <h2>I don't hand code over a wall. I run it.</h2>
+        <p>Every system I build, I also deploy, monitor and recover. This is the actual pipeline behind the Mustek platform, which I run on a shared 2 GB Linux server.</p>
+      </div>
+    </div>
+    <div class="flow reveal" aria-label="Deploy pipeline" style="margin-bottom:18px">
+      <span>git push</span><i>→</i><span>76 tests must pass</span><i>→</i><span>backup database</span><i>→</i><span>pull &amp; install</span><i>→</i><span>migrate</span><i>→</i><span>pm2 reload</span><i>→</i><span>health check</span><i>→</i><span>server audit</span>
+    </div>
+    <div class="grid grid--2" style="align-items:stretch">
+      <div class="term reveal" aria-label="Output of a real deploy, shortened">
+        <div class="term__bar"><i></i><i></i><i></i><b>deploy/update.sh</b></div>
+        <pre><span class="c">$</span> deploy/update.sh
+<span class="k">==</span> Backup before changing anything
+   backup ok: 400K database
+<span class="k">==</span> Pull · Install · Photo copies (WebP)
+<span class="k">==</span> Restart <span class="c">(migrations run on start)</span>
+   Applied 009_personalization.sql
+   <span class="s">API healthy.</span>
+<span class="k">==</span> Server check
+   <span class="s">OK</span>  API listens on loopback only
+   <span class="s">OK</span>  database port 5432 on loopback only
+   <span class="s">OK</span>  backup from the last 26 hours
+   <span class="s">OK</span>  SSH passwords off (keys only)
+   <span class="n">WARN</span> backups only on this server</pre>
+      </div>
+      <div class="grid grid--2">
+        <div class="card reveal"><h4>Containers &amp; servers</h4><p class="small">Docker and Compose, nginx reverse proxy with TLS (certbot), pm2 with memory caps and crash back-off, Linux hardening.</p></div>
+        <div class="card reveal"><h4>Safe deploys</h4><p class="small">One command: backup, pull, install, migrate, reload, health-check, then an automatic audit of the server's setup.</p></div>
+        <div class="card reveal"><h4>Monitoring &amp; alerts</h4><p class="small">Security dashboard with an attack map; email alerts for crashes, expiring certificates, missing backups and full disks. Prometheus and Grafana.</p></div>
+        <div class="card reveal"><h4>Recovery</h4><p class="small">Nightly backups of data and uploads, written restore steps, and a runbook to rebuild everything on a new server.</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -120,12 +166,12 @@
   <div class="wrap">
     <div class="cta reveal">
       <div>
-        <h2>Hiring a backend engineer, or need a system built?</h2>
-        <p>I'm open to backend and platform roles: relocation, hybrid or on-site.</p>
+        <h2>Hiring a backend or DevOps engineer, or need a system built?</h2>
+        <p>Open to full-time roles (relocation, hybrid or on-site) and to client projects.</p>
       </div>
       <div class="btns">
         <a class="btn btn--primary" href="contact.html">Contact me</a>
-        <a class="btn btn--ghost" href="experience.html">View experience</a>
+        <a class="btn btn--ghost" href="services.html">How I can help</a>
       </div>
     </div>
   </div>
