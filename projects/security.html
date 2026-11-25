@@ -96,7 +96,7 @@
         <h2>Built for legal review</h2>
         <ul>
           <li>The scope file is <b>HMAC-signed</b>: a tampered scope fails verification and the run stops.</li>
-          <li>Each audit entry hashes the previous one, so changing any past entry breaks every later hash, and <code>verify-audit</code> re-checks the whole chain.</li>
+          <li>Each audit entry hashes the previous one, so changing any past entry breaks every later hash, and a built-in check re-verifies the whole chain.</li>
           <li>Every log records the SHA-256 of the build that produced it, proving which version created the evidence.</li>
           <li>Checks on money-handling systems use only GET, HEAD and OPTIONS. Moving money or manipulating bets is deliberately <b>not</b> automated.</li>
         </ul>

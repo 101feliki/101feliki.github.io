@@ -92,7 +92,7 @@
         <h2>Architecture</h2>
         <div class="flow" aria-label="Architecture"><span>Guest app</span><span>Business app</span><span>Admin console</span><span>Website</span><i>→</i><span>Typed SDK</span><i>→</i><span>NestJS API</span><i>→</i><span>PostgreSQL + RLS</span></div>
         <ul>
-          <li>One <b>NestJS API</b> (Swagger at <code>/docs</code>) serves four apps from a <b>Turborepo monorepo</b>.</li>
+          <li>One documented <b>NestJS API</b> serves four apps from a <b>Turborepo monorepo</b>.</li>
           <li>Shared packages: request/response schemas and roles, a typed API client (SDK), a design system, and lint/TypeScript presets, so the apps and API can't drift apart.</li>
           <li>Runs on <b>PGlite</b> (PostgreSQL in WebAssembly) for zero-install development, or PostgreSQL 16, Redis and Mailpit through Docker Compose.</li>
         </ul>
@@ -122,7 +122,7 @@
 
       <section id="quality">
         <h2>Quality</h2>
-        <p>Every change passes one command: <code>pnpm lint &amp;&amp; pnpm typecheck &amp;&amp; pnpm test &amp;&amp; pnpm build</code>, with conventional commits enforced.</p>
+        <p>Every change must pass linting, type checks, automated tests and a full build before it goes in, so the main branch is always releasable.</p>
       </section>
 
       <section id="next">

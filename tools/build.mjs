@@ -32,6 +32,43 @@ export const ICONS = {
 }
 const icon = (name, cls = 'icon') => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true">${ICONS[name]}</svg>`
 
+// ---------- Project cards from _data/projects.json ----------
+// {{projects}} in a page = every project; {{featured}} = the ones marked "featured".
+const { projects } = JSON.parse(readFileSync(join(root, '_data', 'projects.json'), 'utf8'))
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c])
+const STATUS = {
+  live: '<span class="badge badge--live">Live</span>',
+  building: '<span class="badge badge--open">Building</span>',
+  open: '<span class="badge badge--open">Open source</span>',
+  private: `<span class="badge badge--private">${'{{icon:lock}}'} Private</span>`,
+  research: '<span class="badge badge--open">Research</span>',
+}
+function card(p, up, { featured = false } = {}) {
+  const href = (u) => (/^(https?:|mailto:|#)/.test(u) ? u : up + u)
+  const external = (u) => (/^https?:/.test(u) ? ' rel="noopener"' : '')
+  const shot = p.image
+    ? `<a class="project__shot" href="${href(p.caseStudy || p.links?.[0]?.url || '#')}"${p.caseStudy ? '' : external(p.links?.[0]?.url || '')} tabindex="-1" aria-hidden="true"><img src="${up}${p.image}" alt="" width="640" height="360" loading="lazy"></a>`
+    : ''
+  const impact = p.impact?.length ? `\n  <ul class="project__impact">${p.impact.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>` : ''
+  const links = [
+    p.caseStudy ? `<a class="btn btn--primary btn--sm" href="${href(p.caseStudy)}">Case study</a>` : '',
+    ...(p.links ?? []).map((l) => `<a class="btn btn--ghost btn--sm" href="${href(l.url)}"${external(l.url)}>${l.icon === 'github' || l.icon === 'gitlab' ? `{{icon:${l.icon}}} ` : ''}${esc(l.label)}${l.icon === 'external' ? ' {{icon:external}}' : ''}</a>`),
+    p.privateCode ? '<span class="badge badge--private">{{icon:lock}} Private code</span>' : '',
+  ].filter(Boolean)
+  return `<article class="card project${featured || p.featured ? ' project--featured' : ''} reveal" data-tags="${esc((p.filters ?? []).join(' '))}">
+  ${shot}
+  <div class="project__top"><span class="project__kind">${esc(p.kind)}</span>${STATUS[p.status] ?? ''}</div>
+  <h3>${esc(p.title)}</h3>
+  <p>${esc(p.summary)}</p>${impact}
+  <ul class="tags">${(p.tags ?? []).map((t) => `<li class="tag">${esc(t)}</li>`).join('')}</ul>
+  <div class="project__links">${links.join('\n    ')}</div>
+</article>`
+}
+const projectCards = (html, up) =>
+  html
+    .replace('{{projects}}', () => projects.map((p) => card(p, up)).join('\n'))
+    .replace('{{featured}}', () => projects.filter((p) => p.featured).map((p) => card(p, up, { featured: true })).join('\n'))
+
 // {{icon:github}} in page sources becomes the inline SVG.
 const expand = (html) => html.replace(/\{\{icon:(\w+)\}\}/g, (_, n) => icon(n))
 
@@ -89,7 +126,7 @@ function layout({ title, description, nav, body, rel, path }) {
   </header>
 
   <main id="main">
-${expand(body).trim()}
+${expand(projectCards(body, up)).trim()}
   </main>
 
   <footer class="footer">

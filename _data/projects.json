@@ -1,0 +1,157 @@
+{
+  "_help": "One entry per project. The site is rebuilt from this file automatically on every push (see README). Fields: title, kind (small label), status (live | building | open | private | research), summary, impact (short bullets, optional), tags (technologies), filters (work, insurance, platform, security, learning), featured (true = also shown on Home), image (optional: assets/img/shots/<name>.webp, 640x360), caseStudy (optional page), links (label, url, icon: github | gitlab | external).",
+  "projects": [
+    {
+      "title": "Mustek East Africa platform",
+      "kind": "Client · E-commerce",
+      "status": "live",
+      "summary": "API, admin back-end, security dashboard and operations for a hardware distributor's website.",
+      "impact": ["76 automated tests gate every deploy", "Photos 77% lighter with a WebP pipeline", "Consent-based personalisation, careers with CV upload"],
+      "tags": ["Express 5", "PostgreSQL", "Docker", "nginx"],
+      "filters": ["work", "platform"],
+      "featured": true,
+      "image": "assets/img/shots/mustek-api.webp",
+      "imageAlt": "The Mustek East Africa API documentation",
+      "caseStudy": "projects/mustek.html",
+      "links": [{ "label": "Live site", "url": "https://mustekea.jasco.co.ke", "icon": "external" }],
+      "privateCode": true
+    },
+    {
+      "title": "Stayvinci",
+      "kind": "SaaS · Booking",
+      "status": "building",
+      "summary": "Multi-tenant booking and storefront platform: API, guest PWA, business app, admin console and website in one monorepo.",
+      "impact": ["Tenant isolation with PostgreSQL row-level security", "Four apps on one typed API", "30 showcase stores for end-to-end demos"],
+      "tags": ["NestJS", "Drizzle", "PostgreSQL RLS", "React", "Turborepo"],
+      "filters": ["platform"],
+      "featured": true,
+      "image": "assets/img/shots/stayvinci.webp",
+      "imageAlt": "The Stayvinci website home page",
+      "caseStudy": "projects/stayvinci.html",
+      "links": [{ "label": "Code", "url": "https://github.com/101feliki/stayvinci", "icon": "github" }]
+    },
+    {
+      "title": "AEGIS",
+      "kind": "Security · Tooling",
+      "status": "open",
+      "summary": "An authorization-first, read-only assessment suite and money-integrity monitor: nothing runs outside a signed scope, and every action is logged.",
+      "impact": ["Tamper-evident, hash-chained audit log", "Zero dependencies: pure Python standard library"],
+      "tags": ["Python", "Audit logging", "Monitoring"],
+      "filters": ["security"],
+      "featured": true,
+      "image": "assets/img/shots/aegis.webp",
+      "imageAlt": "The AEGIS monitor dashboard, running on demo data",
+      "caseStudy": "projects/security.html",
+      "links": [{ "label": "Code", "url": "https://github.com/101feliki/aegis", "icon": "github" }]
+    },
+    {
+      "title": "Microinsurance Fraud Detection",
+      "kind": "Insurance · ML",
+      "status": "open",
+      "summary": "Scores each insurance claim for fraud risk, explains why it was flagged, and gives analysts a dashboard to decide.",
+      "impact": ["Plugs in front of any claims system via REST", "Explainable 0–1 risk score, not a black box"],
+      "tags": ["Express", "FastAPI", "PostgreSQL", "React", "Docker"],
+      "filters": ["insurance"],
+      "caseStudy": "projects/insurance.html#fraud",
+      "links": [{ "label": "Code", "url": "https://github.com/101feliki/fraud-detection-system", "icon": "github" }]
+    },
+    {
+      "title": "InsureLog",
+      "kind": "Insurance · Observability",
+      "status": "open",
+      "summary": "A plug-and-play logging toolkit for insurance microservices: one dependency gives every Spring Boot service structured events.",
+      "impact": ["Automatic personal-data masking", "Correlation IDs follow a customer across services", "Central search, export and Grafana dashboard"],
+      "tags": ["Java 17", "Spring Boot 3", "Prometheus", "Grafana"],
+      "filters": ["insurance"],
+      "caseStudy": "projects/insurance.html#insurelog",
+      "links": [{ "label": "Code", "url": "https://github.com/101feliki/java-logging-system", "icon": "github" }]
+    },
+    {
+      "title": "Policy follow-up mailer",
+      "kind": "Insurance · Sales",
+      "status": "open",
+      "summary": "Reads a client list (Excel or CSV) and sends each customer who started buying cover a personalised follow-up email.",
+      "impact": ["Skips bad, missing and duplicate rows, and says why", "Everything configurable: nothing hard-coded"],
+      "tags": ["Node.js", "Nodemailer", "CSV / XLSX"],
+      "filters": ["insurance"],
+      "caseStudy": "projects/insurance.html#followup",
+      "links": [{ "label": "Code", "url": "https://github.com/101feliki/simple-email-notification-service", "icon": "github" }]
+    },
+    {
+      "title": "Training Attendance System",
+      "kind": "Client · HR",
+      "status": "private",
+      "summary": "Replaces a paper HR attendance form: employees sign in with a drawn signature, and finished sessions become branded PDFs on a helpdesk ticket.",
+      "impact": ["QR sign-in and an offline queue", "PDF auto-attached to Freshservice", "Microsoft Entra ID single sign-on"],
+      "tags": ["Express", "React", "pdf-lib", "MSAL"],
+      "filters": ["work"],
+      "links": [{ "label": "Details in Experience", "url": "experience.html" }]
+    },
+    {
+      "title": "Sales Returns Portal",
+      "kind": "Client · Sales ops",
+      "status": "private",
+      "summary": "Agents log up to 500 returned items; the system builds the Excel file, raises the Freshservice request and, on approval, creates Freshsales deals.",
+      "impact": ["Webhook plus a 5-minute safety sweep: no approval missed", "Bulk upsert of one deal per item"],
+      "tags": ["Fastify", "TypeScript", "PostgreSQL"],
+      "filters": ["work"],
+      "links": [{ "label": "Details in Experience", "url": "experience.html" }]
+    },
+    {
+      "title": "ARTEX defence map",
+      "kind": "Security · Research",
+      "status": "research",
+      "summary": "A capability-by-capability breakdown of an open-source AI pentest platform, written to build detection and defence services for Kenyan banks.",
+      "impact": ["Ten segments, from recon to evidence reporting", "Each with the defensive signals to watch for"],
+      "tags": ["Threat modelling", "Go", "Detection"],
+      "filters": ["security"],
+      "caseStudy": "projects/security.html#artex",
+      "links": [{ "label": "Read the map", "url": "https://github.com/101feliki/aegis/blob/main/INDEX.md", "icon": "github" }]
+    },
+    {
+      "title": "Customer Care Notification System",
+      "kind": "Communications",
+      "status": "open",
+      "summary": "Reach customers by email and SMS: one-off messages, bulk campaigns from CSV lists, templates, and delivery tracking in one dashboard.",
+      "tags": ["NestJS", "Prisma", "PostgreSQL", "React"],
+      "filters": ["platform"],
+      "links": [{ "label": "Code", "url": "https://github.com/101feliki/customer-care-system", "icon": "github" }]
+    },
+    {
+      "title": "BlueVision Realtors",
+      "kind": "Client · Real estate",
+      "status": "open",
+      "summary": "Website for a Kenyan land specialist helping local buyers and Kenyans abroad find and buy verified land.",
+      "tags": ["React", "TypeScript", "Vite", "Tailwind", "Render"],
+      "filters": ["work", "platform"],
+      "links": [{ "label": "Code", "url": "https://github.com/101feliki/bluevision-realtors", "icon": "github" }]
+    },
+    {
+      "title": "Blokichain voting",
+      "kind": "Blockchain · AI",
+      "status": "open",
+      "summary": "Polls and votes live on an Ethereum smart contract so results can't be tampered with; an AI service flags unusual voting patterns.",
+      "tags": ["Solidity", "Node.js", "React", "Python"],
+      "filters": ["platform", "security"],
+      "links": [{ "label": "Code", "url": "https://github.com/101feliki/blokichain", "icon": "github" }]
+    },
+    {
+      "title": "Plain-English SQL route",
+      "kind": "AI · Data",
+      "status": "open",
+      "summary": "A Next.js API route on Supabase that turns \"How many orders this week?\" into a read-only SQL query, using the real schema as context.",
+      "tags": ["Next.js", "Supabase", "OpenAI"],
+      "filters": ["platform"],
+      "links": [{ "label": "Code", "url": "https://github.com/101feliki/supabase-supabase-embedded-dashboard", "icon": "github" }]
+    },
+    {
+      "title": "freeCodeCamp back-end projects",
+      "kind": "Certification",
+      "status": "open",
+      "summary": "The five projects for the Back End Development and APIs certification: a timestamp microservice, chat app, watchlist API with JWT and more.",
+      "tags": ["Node.js", "Express", "JWT"],
+      "filters": ["learning"],
+      "links": [{ "label": "Code", "url": "https://github.com/101feliki/fcc-backend-certification-projects", "icon": "github" }]
+    }
+  ]
+}

@@ -98,9 +98,9 @@
         <p>A logging toolkit for insurance microservices. Add one dependency to any Spring Boot service and it gets structured insurance events, <b>automatic personal-data masking</b>, and <b>correlation IDs that follow a customer</b> from policy to claim to payment.</p>
         <div class="flow" aria-label="InsureLog architecture"><span>policy-service</span><span>claims-service</span><span>payments-service</span><i>→</i><span>batched async HTTP</span><i>→</i><span>insurelog-server</span><i>→</i><span>Prometheus</span><i>→</i><span>Grafana</span></div>
         <ul>
-          <li><code>insurelog-core</code>: a framework-free library (event model, PII masking, validation, HTTP shipper, Micrometer metrics).</li>
-          <li><code>insurelog-spring-boot-starter</code>: the plug-and-play part; auto-configures everything in two steps.</li>
-          <li><code>insurelog-server</code>: central ingest, search, "trace a customer journey", CSV/JSON export, Swagger and Actuator.</li>
+          <li><b>Core library</b>: the event model, personal-data masking, validation, shipping to the server and metrics, usable without any framework.</li>
+          <li><b>Spring Boot starter</b>: the plug-and-play part. Add it to a service and everything is set up automatically.</li>
+          <li><b>Central server</b>: collects events from every service, with search, "trace a customer journey", CSV and JSON export, and API docs.</li>
           <li>A demo claims service generates live traffic to show it working end to end.</li>
         </ul>
         <p class="callout"><b>Why it matters:</b> when a customer says "my claim disappeared", support can follow that customer's correlation ID across every service, without anyone seeing their ID number or phone in the logs.</p>
