@@ -88,10 +88,10 @@
     },
     {
       "title": "Microinsurance experience",
-      "kind": "Insurance · 7 systems",
+      "kind": "Insurance · 6 systems",
       "status": "experience",
-      "summary": "At Birdview Microinsurance: facial recognition attendance, financial transactions, customer notifications and an asset registry. Plus my own fraud detection, InsureLog and policy follow-up services.",
-      "value": "Systems that protect an insurer's margins and time: automated attendance for 50+ staff, audited transactions, faster customer communication, fraud caught before it's paid, and customers won back.",
+      "summary": "At Birdview Microinsurance: facial recognition attendance, financial transactions, customer notifications and an asset registry. Plus my own fraud detection and InsureLog services.",
+      "value": "Systems that protect an insurer's margins and time: automated attendance for 50+ staff, audited transactions, faster customer communication, and fraud caught before it's paid.",
       "tags": [
         "Node.js",
         "PostgreSQL",
@@ -107,10 +107,10 @@
       "cover": {
         "theme": "birdview",
         "headline": "Stop fraud. Serve faster. Account for every shilling.",
-        "tagline": "Birdview Microinsurance · 7 systems",
+        "tagline": "Birdview Microinsurance · 6 systems",
         "logo": "assets/img/logos/birdview.png",
         "stat": [
-          "7",
+          "6",
           "systems"
         ],
         "icon": "layers"
@@ -391,40 +391,6 @@
       ]
     },
     {
-      "title": "Policy follow-up mailer",
-      "kind": "Insurance · Sales",
-      "status": "open",
-      "summary": "Reads a client list (Excel or CSV) and sends each customer who started buying cover a personalised follow-up email.",
-      "value": "Can turn abandoned policy applications back into paying customers, without anyone writing emails by hand.",
-      "impact": [
-        "Skips bad, missing and duplicate rows, and says why",
-        "Everything configurable: nothing hard-coded"
-      ],
-      "tags": [
-        "Node.js",
-        "Nodemailer",
-        "CSV / XLSX"
-      ],
-      "filters": [
-        "insurance"
-      ],
-      "cover": {
-        "theme": "insurance",
-        "wordmark": "Follow-up",
-        "headline": "Win back unfinished policies.",
-        "tagline": "Personal emails, sent at scale",
-        "icon": "mail"
-      },
-      "caseStudy": "projects/insurance.html#followup",
-      "links": [
-        {
-          "label": "Code",
-          "url": "https://github.com/101feliki/simple-email-notification-service",
-          "icon": "github"
-        }
-      ]
-    },
-    {
       "title": "Training Attendance System",
       "kind": "Client · HR",
       "status": "private",
@@ -591,35 +557,6 @@
         {
           "label": "Code",
           "url": "https://github.com/101feliki/blokichain",
-          "icon": "github"
-        }
-      ]
-    },
-    {
-      "title": "Plain-English SQL route",
-      "kind": "AI · Data",
-      "status": "open",
-      "summary": "A Next.js API route on Supabase that turns \"How many orders this week?\" into a read-only SQL query, using the real schema as context.",
-      "value": "Lets non-technical staff answer their own data questions in seconds, safely read-only, without waiting for a developer.",
-      "tags": [
-        "Next.js",
-        "Supabase",
-        "OpenAI"
-      ],
-      "filters": [
-        "platform"
-      ],
-      "cover": {
-        "theme": "platform",
-        "wordmark": "Ask your data",
-        "headline": "Questions in English, answers in seconds.",
-        "tagline": "Read-only AI SQL",
-        "icon": "chart"
-      },
-      "links": [
-        {
-          "label": "Code",
-          "url": "https://github.com/101feliki/supabase-supabase-embedded-dashboard",
           "icon": "github"
         }
       ]

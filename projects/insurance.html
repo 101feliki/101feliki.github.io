@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Insurance technology · Felix Kariuki</title>
-  <meta name="description" content="Case study: Felix Kariuki's insurance work: four systems built at Birdview Microinsurance, plus fraud detection, InsureLog and a policy follow-up mailer.">
+  <meta name="description" content="Case study: Felix Kariuki's insurance work: four systems built at Birdview Microinsurance, plus fraud detection and InsureLog.">
   <meta name="author" content="Felix Kariuki">
   <meta name="theme-color" content="#07090c" media="(prefers-color-scheme: dark)">
   <meta name="theme-color" content="#f5f7fa" media="(prefers-color-scheme: light)">
@@ -15,7 +15,7 @@
   <link rel="canonical" href="https://101feliki.github.io/projects/insurance.html">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Insurance technology · Felix Kariuki">
-  <meta property="og:description" content="Case study: Felix Kariuki's insurance work: four systems built at Birdview Microinsurance, plus fraud detection, InsureLog and a policy follow-up mailer.">
+  <meta property="og:description" content="Case study: Felix Kariuki's insurance work: four systems built at Birdview Microinsurance, plus fraud detection and InsureLog.">
   <meta property="og:image" content="https://101feliki.github.io/assets/img/og.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta property="og:url" content="https://101feliki.github.io/projects/insurance.html">
@@ -57,8 +57,8 @@
   <div class="wrap">
     <nav class="crumbs" aria-label="Breadcrumb"><a href="../projects.html">Projects</a> / <span>Insurance technology</span></nav>
     <span class="eyebrow">Case study · Insurance</span>
-    <h1>Microinsurance: seven systems for the parts of insurance that cost time and money</h1>
-    <p class="lead">At <b>Birdview Microinsurance</b> I built four internal systems: attendance, financial transactions, customer notifications and an asset registry. Beyond that, I built three services for the places insurers quietly lose money: claims paid that shouldn't be, problems nobody can trace across systems, and customers who start buying cover but never finish.</p>
+    <h1>Microinsurance: six systems for the parts of insurance that cost time and money</h1>
+    <p class="lead">At <b>Birdview Microinsurance</b> I built four internal systems: attendance, financial transactions, customer notifications and an asset registry. Beyond that, I built two services for the places insurers quietly lose money: claims paid that shouldn't be, and problems nobody can trace across systems.</p>
     <div class="btns" style="margin-bottom:6px"><span class="cover__brand" style="padding:5px 10px;border-radius:9px;background:#fff"><img src="../assets/img/logos/birdview.png" alt="Birdview Microinsurance" style="height:30px;width:auto"></span></div>
     <div class="facts">
       <div class="fact"><small>Birdview</small><span>Software Engineering Intern · Nov 2025 – Jan 2026</span></div>
@@ -75,7 +75,6 @@
       <a href="#birdview">Birdview Microinsurance</a>
       <a href="#fraud">1 · Fraud detection</a>
       <a href="#insurelog">2 · InsureLog</a>
-      <a href="#followup">3 · Follow-up mailer</a>
       <a href="#together">How they fit together</a>
     </nav>
     <div class="case__body">
@@ -122,22 +121,9 @@
         <div class="btns"><a class="btn btn--ghost btn--sm" href="https://github.com/101feliki/java-logging-system" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z" fill="currentColor"/></svg> Code</a></div>
       </section>
 
-      <section id="followup">
-        <span class="eyebrow">03</span>
-        <h2>Policy follow-up mailer</h2>
-        <p>A command-line tool that reads a list of clients from Excel or CSV and sends each one a personalised follow-up email, for example to customers who started buying an insurance product but didn't finish.</p>
-        <ul>
-          <li>Recognises common column names (Name / Client Name, Email / Email Address, Product).</li>
-          <li>Skips rows with missing names, invalid emails or duplicates, and reports exactly which rows and why.</li>
-          <li>HTML and plain-text emails with client data safely escaped; company details, logo and products come from settings, nothing hard-coded.</li>
-          <li>A delay between sends to stay within mail-provider limits.</li>
-        </ul>
-        <div class="btns"><a class="btn btn--ghost btn--sm" href="https://github.com/101feliki/simple-email-notification-service" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z" fill="currentColor"/></svg> Code</a></div>
-      </section>
-
       <section id="together">
         <h2>How they fit together</h2>
-        <p>Together they cover a customer's whole journey: the mailer brings back customers who dropped off, InsureLog traces them across every service once they're insured, and fraud detection protects the claims they make. Each one stands alone, so an insurer can adopt one without the others.</p>
+        <p>Together they cover a customer's journey once they're insured: InsureLog traces them across every service, and fraud detection protects the claims they make. Each one stands alone, so an insurer can adopt one without the other.</p>
       </section>
 
       <nav class="pager" aria-label="More case studies">

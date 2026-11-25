@@ -60,6 +60,9 @@ if (filters.length && cards.length) {
 const latest = document.getElementById('latest-repos')
 if (latest) loadLatestRepos(latest)
 
+// Repositories never shown in "Latest on GitHub" (add a name here to keep it off the site).
+const HIDDEN = new Set(['101feliki', '101feliki.github.io', 'simple-email-notification-service', 'supabase-supabase-embedded-dashboard'])
+
 async function loadLatestRepos(box) {
   const KEY = 'gh-repos-v1'
   let repos
@@ -79,7 +82,7 @@ async function loadLatestRepos(box) {
   }
   const shown = new Set([...document.querySelectorAll('a[href*="github.com/101feliki/"]')].map((a) => a.href.split('/')[4]?.toLowerCase()))
   const fresh = repos
-    .filter((r) => !r.fork && r.name.toLowerCase() !== '101feliki' && r.name.toLowerCase() !== '101feliki.github.io' && !shown.has(r.name.toLowerCase()))
+    .filter((r) => !r.fork && !HIDDEN.has(r.name.toLowerCase()) && !shown.has(r.name.toLowerCase()))
     .sort((a, b) => b.pushed.localeCompare(a.pushed))
     .slice(0, 6)
   if (!fresh.length) return

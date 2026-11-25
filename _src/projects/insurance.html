@@ -1,10 +1,10 @@
-<!-- {"title": "Insurance technology", "description": "Case study: Felix Kariuki's insurance work: four systems built at Birdview Microinsurance, plus fraud detection, InsureLog and a policy follow-up mailer.", "nav": "projects"} -->
+<!-- {"title": "Insurance technology", "description": "Case study: Felix Kariuki's insurance work: four systems built at Birdview Microinsurance, plus fraud detection and InsureLog.", "nav": "projects"} -->
 <section class="case-hero">
   <div class="wrap">
     <nav class="crumbs" aria-label="Breadcrumb"><a href="../projects.html">Projects</a> / <span>Insurance technology</span></nav>
     <span class="eyebrow">Case study · Insurance</span>
-    <h1>Microinsurance: seven systems for the parts of insurance that cost time and money</h1>
-    <p class="lead">At <b>Birdview Microinsurance</b> I built four internal systems: attendance, financial transactions, customer notifications and an asset registry. Beyond that, I built three services for the places insurers quietly lose money: claims paid that shouldn't be, problems nobody can trace across systems, and customers who start buying cover but never finish.</p>
+    <h1>Microinsurance: six systems for the parts of insurance that cost time and money</h1>
+    <p class="lead">At <b>Birdview Microinsurance</b> I built four internal systems: attendance, financial transactions, customer notifications and an asset registry. Beyond that, I built two services for the places insurers quietly lose money: claims paid that shouldn't be, and problems nobody can trace across systems.</p>
     <div class="btns" style="margin-bottom:6px"><span class="cover__brand" style="padding:5px 10px;border-radius:9px;background:#fff"><img src="../assets/img/logos/birdview.png" alt="Birdview Microinsurance" style="height:30px;width:auto"></span></div>
     <div class="facts">
       <div class="fact"><small>Birdview</small><span>Software Engineering Intern · Nov 2025 – Jan 2026</span></div>
@@ -21,7 +21,6 @@
       <a href="#birdview">Birdview Microinsurance</a>
       <a href="#fraud">1 · Fraud detection</a>
       <a href="#insurelog">2 · InsureLog</a>
-      <a href="#followup">3 · Follow-up mailer</a>
       <a href="#together">How they fit together</a>
     </nav>
     <div class="case__body">
@@ -68,22 +67,9 @@
         <div class="btns"><a class="btn btn--ghost btn--sm" href="https://github.com/101feliki/java-logging-system" rel="noopener">{{icon:github}} Code</a></div>
       </section>
 
-      <section id="followup">
-        <span class="eyebrow">03</span>
-        <h2>Policy follow-up mailer</h2>
-        <p>A command-line tool that reads a list of clients from Excel or CSV and sends each one a personalised follow-up email, for example to customers who started buying an insurance product but didn't finish.</p>
-        <ul>
-          <li>Recognises common column names (Name / Client Name, Email / Email Address, Product).</li>
-          <li>Skips rows with missing names, invalid emails or duplicates, and reports exactly which rows and why.</li>
-          <li>HTML and plain-text emails with client data safely escaped; company details, logo and products come from settings, nothing hard-coded.</li>
-          <li>A delay between sends to stay within mail-provider limits.</li>
-        </ul>
-        <div class="btns"><a class="btn btn--ghost btn--sm" href="https://github.com/101feliki/simple-email-notification-service" rel="noopener">{{icon:github}} Code</a></div>
-      </section>
-
       <section id="together">
         <h2>How they fit together</h2>
-        <p>Together they cover a customer's whole journey: the mailer brings back customers who dropped off, InsureLog traces them across every service once they're insured, and fraud detection protects the claims they make. Each one stands alone, so an insurer can adopt one without the others.</p>
+        <p>Together they cover a customer's journey once they're insured: InsureLog traces them across every service, and fraud detection protects the claims they make. Each one stands alone, so an insurer can adopt one without the other.</p>
       </section>
 
       <nav class="pager" aria-label="More case studies">
