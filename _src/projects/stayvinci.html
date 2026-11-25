@@ -36,6 +36,10 @@
 
       <section id="architecture">
         <h2>Architecture</h2>
+        <figure class="shot">
+          <img src="../assets/img/shots/stayvinci.webp" width="640" height="360" loading="lazy" alt="The Stayvinci website home page">
+          <figcaption>The Stayvinci website, one of the four apps on the shared API.</figcaption>
+        </figure>
         <div class="flow" aria-label="Architecture"><span>Guest app</span><span>Business app</span><span>Admin console</span><span>Website</span><i>→</i><span>Typed SDK</span><i>→</i><span>NestJS API</span><i>→</i><span>PostgreSQL + RLS</span></div>
         <ul>
           <li>One documented <b>NestJS API</b> serves four apps from a <b>Turborepo monorepo</b>.</li>

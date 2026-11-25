@@ -1,19 +1,42 @@
 {
-  "_help": "One entry per project. The site is rebuilt from this file automatically on every push (see README). Fields: title, kind (small label), status (live | building | open | private | research), summary, impact (short bullets, optional), tags (technologies), filters (work, insurance, platform, security, learning), featured (true = also shown on Home), image (optional: assets/img/shots/<name>.webp, 640x360), caseStudy (optional page), links (label, url, icon: github | gitlab | external).",
+  "_help": "One entry per project; the site rebuilds from this file on every push (see README). Fields: title, kind, status (live | building | open | private | research | experience), summary, value (the business value: what it can do for the people who use it), impact (short bullets, optional), tags, filters (work, insurance, platform, security, learning), featured (true = on Home), homeOnly (true = only on Home), cover { theme (mustek | birdview | stayvinci | aegis | insurance | movit | security | platform | learning | realestate), logo (image path) or wordmark (text), headline, tagline }, caseStudy (optional page), links (label, url, icon: github | gitlab | external), privateCode.",
   "projects": [
     {
       "title": "Mustek East Africa platform",
       "kind": "Client · E-commerce",
       "status": "live",
       "summary": "API, admin back-end, security dashboard and operations for a hardware distributor's website.",
-      "impact": ["76 automated tests gate every deploy", "Photos 77% lighter with a WebP pipeline", "Consent-based personalisation, careers with CV upload"],
-      "tags": ["Express 5", "PostgreSQL", "Docker", "nginx"],
-      "filters": ["work", "platform"],
+      "value": "Lets customers browse, order and request quotes around the clock, sends every order straight to sales, and keeps the business protected, monitored and recoverable.",
+      "impact": [
+        "76 automated tests gate every deploy",
+        "Photos 77% lighter with a WebP pipeline",
+        "Consent-based personalisation, careers with CV upload"
+      ],
+      "tags": [
+        "Express 5",
+        "PostgreSQL",
+        "Docker",
+        "nginx"
+      ],
+      "filters": [
+        "work",
+        "platform"
+      ],
       "featured": true,
-      "image": "assets/img/shots/mustek-api.webp",
-      "imageAlt": "The Mustek East Africa API documentation",
+      "cover": {
+        "theme": "mustek",
+        "logo": "assets/img/logos/mustek.png",
+        "headline": "Powering Mustek's online store",
+        "tagline": "Catalogue · Orders · Careers · Security"
+      },
       "caseStudy": "projects/mustek.html",
-      "links": [{ "label": "Live site", "url": "https://mustekea.jasco.co.ke", "icon": "external" }],
+      "links": [
+        {
+          "label": "Live site",
+          "url": "https://mustekea.jasco.co.ke",
+          "icon": "external"
+        }
+      ],
       "privateCode": true
     },
     {
@@ -21,137 +44,548 @@
       "kind": "SaaS · Booking",
       "status": "building",
       "summary": "Multi-tenant booking and storefront platform: API, guest PWA, business app, admin console and website in one monorepo.",
-      "impact": ["Tenant isolation with PostgreSQL row-level security", "Four apps on one typed API", "30 showcase stores for end-to-end demos"],
-      "tags": ["NestJS", "Drizzle", "PostgreSQL RLS", "React", "Turborepo"],
-      "filters": ["platform"],
+      "value": "Gives every spa, therapist and stay its own private, branded store with bookings paid straight into their own account: less phone-tag and fewer no-shows for them, and recurring platform revenue across many businesses.",
+      "impact": [
+        "Tenant isolation with PostgreSQL row-level security",
+        "Four apps on one typed API",
+        "30 showcase stores for end-to-end demos"
+      ],
+      "tags": [
+        "NestJS",
+        "Drizzle",
+        "PostgreSQL RLS",
+        "React",
+        "Turborepo"
+      ],
+      "filters": [
+        "platform"
+      ],
       "featured": true,
-      "image": "assets/img/shots/stayvinci.webp",
-      "imageAlt": "The Stayvinci website home page",
+      "cover": {
+        "theme": "stayvinci",
+        "logo": "assets/img/logos/stayvinci.svg",
+        "headline": "The places you love, booked privately.",
+        "tagline": "Spas · Ateliers · Stays"
+      },
       "caseStudy": "projects/stayvinci.html",
-      "links": [{ "label": "Code", "url": "https://github.com/101feliki/stayvinci", "icon": "github" }]
+      "links": [
+        {
+          "label": "Code",
+          "url": "https://github.com/101feliki/stayvinci",
+          "icon": "github"
+        }
+      ]
+    },
+    {
+      "title": "Microinsurance experience",
+      "kind": "Insurance · 7 systems",
+      "status": "experience",
+      "summary": "At Birdview Microinsurance: facial recognition attendance, financial transactions, customer notifications and an asset registry. Plus my own fraud detection, InsureLog and policy follow-up services.",
+      "value": "Systems that protect an insurer's margins and time: automated attendance for 50+ staff, audited transactions, faster customer communication, fraud caught before it's paid, and customers won back.",
+      "tags": [
+        "Node.js",
+        "PostgreSQL",
+        "Computer vision",
+        "FastAPI",
+        "Spring Boot"
+      ],
+      "filters": [
+        "insurance"
+      ],
+      "featured": true,
+      "homeOnly": true,
+      "cover": {
+        "theme": "birdview",
+        "headline": "Stop fraud. Serve faster. Account for every shilling.",
+        "tagline": "Birdview Microinsurance · 7 systems",
+        "logo": "assets/img/logos/birdview.png"
+      },
+      "caseStudy": "projects/insurance.html",
+      "links": [
+        {
+          "label": "All insurance projects",
+          "url": "projects.html#insurance"
+        }
+      ]
     },
     {
       "title": "AEGIS",
       "kind": "Security · Tooling",
       "status": "open",
       "summary": "An authorization-first, read-only assessment suite and money-integrity monitor: nothing runs outside a signed scope, and every action is logged.",
-      "impact": ["Tamper-evident, hash-chained audit log", "Zero dependencies: pure Python standard library"],
-      "tags": ["Python", "Audit logging", "Monitoring"],
-      "filters": ["security"],
+      "value": "Can catch money leaks early (bets paid twice, replayed M-Pesa receipts, payouts above stake × odds) and produces evidence a lawyer can rely on.",
+      "impact": [
+        "Tamper-evident, hash-chained audit log",
+        "Zero dependencies: pure Python standard library"
+      ],
+      "tags": [
+        "Python",
+        "Audit logging",
+        "Monitoring"
+      ],
+      "filters": [
+        "security"
+      ],
       "featured": true,
-      "image": "assets/img/shots/aegis.webp",
-      "imageAlt": "The AEGIS monitor dashboard, running on demo data",
+      "cover": {
+        "theme": "aegis",
+        "wordmark": "AEGIS",
+        "headline": "Proof, not promises.",
+        "tagline": "Authorized · Read-only · Tamper-evident"
+      },
       "caseStudy": "projects/security.html",
-      "links": [{ "label": "Code", "url": "https://github.com/101feliki/aegis", "icon": "github" }]
+      "links": [
+        {
+          "label": "Code",
+          "url": "https://github.com/101feliki/aegis",
+          "icon": "github"
+        }
+      ]
+    },
+    {
+      "title": "Facial Recognition Attendance",
+      "kind": "Insurance · Computer vision",
+      "status": "private",
+      "summary": "Employee attendance platform built at Birdview Microinsurance: staff check in and out by face, with identity verified by MTCNN and SSD MobileNet models.",
+      "value": "Automated check-in and check-out for 50+ staff: no queues at a register, no buddy-punching, and HR gets attendance reports and analytics instead of spreadsheets.",
+      "impact": [
+        "Face detection and verification (MTCNN, SSD MobileNet)",
+        "APIs for attendance logging, authentication, reporting and analytics",
+        "Analytics dashboards for HR"
+      ],
+      "tags": [
+        "Node.js",
+        "PostgreSQL",
+        "JavaScript",
+        "Computer vision"
+      ],
+      "filters": [
+        "insurance",
+        "work"
+      ],
+      "cover": {
+        "theme": "birdview",
+        "headline": "Your face is your timecard.",
+        "tagline": "Facial recognition attendance",
+        "logo": "assets/img/logos/birdview.png"
+      },
+      "links": [
+        {
+          "label": "Details in Experience",
+          "url": "experience.html"
+        }
+      ]
+    },
+    {
+      "title": "Financial Transaction Management",
+      "kind": "Insurance · Finance",
+      "status": "private",
+      "summary": "Backend for internal financial transactions at Birdview Microinsurance: validated database updates and a full audit trail.",
+      "value": "Fewer reconciliation errors and a clear answer to \"who changed this and when\" for every entry, which auditors and finance teams rely on.",
+      "impact": [
+        "Validation workflows for consistent transaction data",
+        "Audit trails across 100+ transaction entries"
+      ],
+      "tags": [
+        "Node.js",
+        "PostgreSQL",
+        "SQL"
+      ],
+      "filters": [
+        "insurance",
+        "work"
+      ],
+      "cover": {
+        "theme": "birdview",
+        "headline": "Every shilling, accounted for.",
+        "tagline": "Transactions · Validation · Audit trail",
+        "logo": "assets/img/logos/birdview.png"
+      },
+      "links": [
+        {
+          "label": "Details in Experience",
+          "url": "experience.html"
+        }
+      ]
+    },
+    {
+      "title": "Asset Registry",
+      "kind": "Insurance · Operations",
+      "status": "private",
+      "summary": "Asset lifecycle management at Birdview Microinsurance: register, assign, track and retire organisational assets.",
+      "value": "Digitised tracking for 200+ assets: the company knows what it owns, where it is and who has it, cutting losses and audit time.",
+      "impact": [
+        "Lifecycle tracking from purchase to retirement",
+        "Replaced manual tracking workflows"
+      ],
+      "tags": [
+        "Node.js",
+        "PostgreSQL"
+      ],
+      "filters": [
+        "insurance",
+        "work"
+      ],
+      "cover": {
+        "theme": "birdview",
+        "headline": "Know what you own.",
+        "tagline": "Asset lifecycle tracking",
+        "logo": "assets/img/logos/birdview.png"
+      },
+      "links": [
+        {
+          "label": "Details in Experience",
+          "url": "experience.html"
+        }
+      ]
+    },
+    {
+      "title": "Customer Care Notification System",
+      "kind": "Insurance · Communications",
+      "status": "open",
+      "summary": "Multi-channel platform built at Birdview Microinsurance to reach customers by SMS and email: one-off messages, bulk campaigns from CSV lists, templates and delivery tracking.",
+      "value": "Cut manual communication delays: policyholders hear about payments, renewals and claims on the channel they read, thousands at a time, with proof of delivery.",
+      "tags": [
+        "NestJS",
+        "Prisma",
+        "PostgreSQL",
+        "React"
+      ],
+      "filters": [
+        "insurance",
+        "work",
+        "platform"
+      ],
+      "cover": {
+        "theme": "birdview",
+        "headline": "Every customer, every channel.",
+        "tagline": "SMS · Email · Campaigns",
+        "logo": "assets/img/logos/birdview.png"
+      },
+      "links": [
+        {
+          "label": "Code",
+          "url": "https://github.com/101feliki/customer-care-system",
+          "icon": "github"
+        }
+      ]
     },
     {
       "title": "Microinsurance Fraud Detection",
       "kind": "Insurance · ML",
       "status": "open",
       "summary": "Scores each insurance claim for fraud risk, explains why it was flagged, and gives analysts a dashboard to decide.",
-      "impact": ["Plugs in front of any claims system via REST", "Explainable 0–1 risk score, not a black box"],
-      "tags": ["Express", "FastAPI", "PostgreSQL", "React", "Docker"],
-      "filters": ["insurance"],
+      "value": "Can stop fraudulent claims before they're paid, and lets analysts spend their time on the risky few instead of reviewing every claim.",
+      "impact": [
+        "Plugs in front of any claims system via REST",
+        "Explainable 0–1 risk score, not a black box"
+      ],
+      "tags": [
+        "Express",
+        "FastAPI",
+        "PostgreSQL",
+        "React",
+        "Docker"
+      ],
+      "filters": [
+        "insurance"
+      ],
+      "cover": {
+        "theme": "insurance",
+        "wordmark": "Fraud Detection",
+        "headline": "Catch fraud before it's paid.",
+        "tagline": "Explainable risk scores for every claim"
+      },
       "caseStudy": "projects/insurance.html#fraud",
-      "links": [{ "label": "Code", "url": "https://github.com/101feliki/fraud-detection-system", "icon": "github" }]
+      "links": [
+        {
+          "label": "Code",
+          "url": "https://github.com/101feliki/fraud-detection-system",
+          "icon": "github"
+        }
+      ]
     },
     {
       "title": "InsureLog",
       "kind": "Insurance · Observability",
       "status": "open",
       "summary": "A plug-and-play logging toolkit for insurance microservices: one dependency gives every Spring Boot service structured events.",
-      "impact": ["Automatic personal-data masking", "Correlation IDs follow a customer across services", "Central search, export and Grafana dashboard"],
-      "tags": ["Java 17", "Spring Boot 3", "Prometheus", "Grafana"],
-      "filters": ["insurance"],
+      "value": "Can cut the time to answer \"what happened to my claim?\" from hours of digging to minutes, while keeping customers' personal data out of the logs.",
+      "impact": [
+        "Automatic personal-data masking",
+        "Correlation IDs follow a customer across services",
+        "Central search, export and Grafana dashboard"
+      ],
+      "tags": [
+        "Java 17",
+        "Spring Boot 3",
+        "Prometheus",
+        "Grafana"
+      ],
+      "filters": [
+        "insurance"
+      ],
+      "cover": {
+        "theme": "insurance",
+        "wordmark": "InsureLog",
+        "headline": "Every claim, traceable.",
+        "tagline": "Logging built for insurers"
+      },
       "caseStudy": "projects/insurance.html#insurelog",
-      "links": [{ "label": "Code", "url": "https://github.com/101feliki/java-logging-system", "icon": "github" }]
+      "links": [
+        {
+          "label": "Code",
+          "url": "https://github.com/101feliki/java-logging-system",
+          "icon": "github"
+        }
+      ]
     },
     {
       "title": "Policy follow-up mailer",
       "kind": "Insurance · Sales",
       "status": "open",
       "summary": "Reads a client list (Excel or CSV) and sends each customer who started buying cover a personalised follow-up email.",
-      "impact": ["Skips bad, missing and duplicate rows, and says why", "Everything configurable: nothing hard-coded"],
-      "tags": ["Node.js", "Nodemailer", "CSV / XLSX"],
-      "filters": ["insurance"],
+      "value": "Can turn abandoned policy applications back into paying customers, without anyone writing emails by hand.",
+      "impact": [
+        "Skips bad, missing and duplicate rows, and says why",
+        "Everything configurable: nothing hard-coded"
+      ],
+      "tags": [
+        "Node.js",
+        "Nodemailer",
+        "CSV / XLSX"
+      ],
+      "filters": [
+        "insurance"
+      ],
+      "cover": {
+        "theme": "insurance",
+        "wordmark": "Follow-up",
+        "headline": "Win back unfinished policies.",
+        "tagline": "Personal emails, sent at scale"
+      },
       "caseStudy": "projects/insurance.html#followup",
-      "links": [{ "label": "Code", "url": "https://github.com/101feliki/simple-email-notification-service", "icon": "github" }]
+      "links": [
+        {
+          "label": "Code",
+          "url": "https://github.com/101feliki/simple-email-notification-service",
+          "icon": "github"
+        }
+      ]
     },
     {
       "title": "Training Attendance System",
       "kind": "Client · HR",
       "status": "private",
       "summary": "Replaces a paper HR attendance form: employees sign in with a drawn signature, and finished sessions become branded PDFs on a helpdesk ticket.",
-      "impact": ["QR sign-in and an offline queue", "PDF auto-attached to Freshservice", "Microsoft Entra ID single sign-on"],
-      "tags": ["Express", "React", "pdf-lib", "MSAL"],
-      "filters": ["work"],
-      "links": [{ "label": "Details in Experience", "url": "experience.html" }]
+      "value": "Retires paper forms and manual filing: every training session leaves an audit-ready record on its own, and HR stops chasing signatures.",
+      "impact": [
+        "QR sign-in and an offline queue",
+        "PDF auto-attached to Freshservice",
+        "Microsoft Entra ID single sign-on"
+      ],
+      "tags": [
+        "Express",
+        "React",
+        "pdf-lib",
+        "MSAL"
+      ],
+      "filters": [
+        "work"
+      ],
+      "cover": {
+        "theme": "movit",
+        "logo": "assets/img/logos/movit.png",
+        "headline": "Paper forms, retired.",
+        "tagline": "Signatures · QR sign-in · Auto PDFs"
+      },
+      "links": [
+        {
+          "label": "Details in Experience",
+          "url": "experience.html"
+        }
+      ]
     },
     {
       "title": "Sales Returns Portal",
       "kind": "Client · Sales ops",
       "status": "private",
       "summary": "Agents log up to 500 returned items; the system builds the Excel file, raises the Freshservice request and, on approval, creates Freshsales deals.",
-      "impact": ["Webhook plus a 5-minute safety sweep: no approval missed", "Bulk upsert of one deal per item"],
-      "tags": ["Fastify", "TypeScript", "PostgreSQL"],
-      "filters": ["work"],
-      "links": [{ "label": "Details in Experience", "url": "experience.html" }]
+      "value": "Turns hours of spreadsheet and ticket work per return into minutes, and makes sure no approved return is ever forgotten.",
+      "impact": [
+        "Webhook plus a 5-minute safety sweep: no approval missed",
+        "Bulk upsert of one deal per item"
+      ],
+      "tags": [
+        "Fastify",
+        "TypeScript",
+        "PostgreSQL"
+      ],
+      "filters": [
+        "work"
+      ],
+      "cover": {
+        "theme": "movit",
+        "logo": "assets/img/logos/movit.png",
+        "headline": "Returns in minutes, not days.",
+        "tagline": "Excel · Freshservice · Freshsales"
+      },
+      "links": [
+        {
+          "label": "Details in Experience",
+          "url": "experience.html"
+        }
+      ]
     },
     {
       "title": "ARTEX defence map",
       "kind": "Security · Research",
       "status": "research",
       "summary": "A capability-by-capability breakdown of an open-source AI pentest platform, written to build detection and defence services for Kenyan banks.",
-      "impact": ["Ten segments, from recon to evidence reporting", "Each with the defensive signals to watch for"],
-      "tags": ["Threat modelling", "Go", "Detection"],
-      "filters": ["security"],
+      "value": "Helps banks prepare their defences against AI-driven attacks before they ever face one.",
+      "impact": [
+        "Ten segments, from recon to evidence reporting",
+        "Each with the defensive signals to watch for"
+      ],
+      "tags": [
+        "Threat modelling",
+        "Go",
+        "Detection"
+      ],
+      "filters": [
+        "security"
+      ],
+      "cover": {
+        "theme": "security",
+        "wordmark": "ARTEX map",
+        "headline": "Know the attacker's playbook.",
+        "tagline": "Defences for AI-driven attacks"
+      },
       "caseStudy": "projects/security.html#artex",
-      "links": [{ "label": "Read the map", "url": "https://github.com/101feliki/aegis/blob/main/INDEX.md", "icon": "github" }]
-    },
-    {
-      "title": "Customer Care Notification System",
-      "kind": "Communications",
-      "status": "open",
-      "summary": "Reach customers by email and SMS: one-off messages, bulk campaigns from CSV lists, templates, and delivery tracking in one dashboard.",
-      "tags": ["NestJS", "Prisma", "PostgreSQL", "React"],
-      "filters": ["platform"],
-      "links": [{ "label": "Code", "url": "https://github.com/101feliki/customer-care-system", "icon": "github" }]
+      "links": [
+        {
+          "label": "Read the map",
+          "url": "https://github.com/101feliki/aegis/blob/main/INDEX.md",
+          "icon": "github"
+        }
+      ]
     },
     {
       "title": "BlueVision Realtors",
       "kind": "Client · Real estate",
       "status": "open",
       "summary": "Website for a Kenyan land specialist helping local buyers and Kenyans abroad find and buy verified land.",
-      "tags": ["React", "TypeScript", "Vite", "Tailwind", "Render"],
-      "filters": ["work", "platform"],
-      "links": [{ "label": "Code", "url": "https://github.com/101feliki/bluevision-realtors", "icon": "github" }]
+      "value": "Builds trust with local and diaspora buyers through verified listings, turning visitors into enquiries.",
+      "tags": [
+        "React",
+        "TypeScript",
+        "Vite",
+        "Tailwind",
+        "Render"
+      ],
+      "filters": [
+        "work",
+        "platform"
+      ],
+      "cover": {
+        "theme": "realestate",
+        "wordmark": "BlueVision",
+        "headline": "Verified land, no stress.",
+        "tagline": "For buyers at home and abroad"
+      },
+      "links": [
+        {
+          "label": "Code",
+          "url": "https://github.com/101feliki/bluevision-realtors",
+          "icon": "github"
+        }
+      ]
     },
     {
       "title": "Blokichain voting",
       "kind": "Blockchain · AI",
       "status": "open",
       "summary": "Polls and votes live on an Ethereum smart contract so results can't be tampered with; an AI service flags unusual voting patterns.",
-      "tags": ["Solidity", "Node.js", "React", "Python"],
-      "filters": ["platform", "security"],
-      "links": [{ "label": "Code", "url": "https://github.com/101feliki/blokichain", "icon": "github" }]
+      "value": "Results anyone can verify: useful for member votes, AGMs and any poll where trust matters.",
+      "tags": [
+        "Solidity",
+        "Node.js",
+        "React",
+        "Python"
+      ],
+      "filters": [
+        "platform",
+        "security"
+      ],
+      "cover": {
+        "theme": "security",
+        "wordmark": "Blokichain",
+        "headline": "Votes no one can rig.",
+        "tagline": "On-chain · AI-checked"
+      },
+      "links": [
+        {
+          "label": "Code",
+          "url": "https://github.com/101feliki/blokichain",
+          "icon": "github"
+        }
+      ]
     },
     {
       "title": "Plain-English SQL route",
       "kind": "AI · Data",
       "status": "open",
       "summary": "A Next.js API route on Supabase that turns \"How many orders this week?\" into a read-only SQL query, using the real schema as context.",
-      "tags": ["Next.js", "Supabase", "OpenAI"],
-      "filters": ["platform"],
-      "links": [{ "label": "Code", "url": "https://github.com/101feliki/supabase-supabase-embedded-dashboard", "icon": "github" }]
+      "value": "Lets non-technical staff answer their own data questions in seconds, safely read-only, without waiting for a developer.",
+      "tags": [
+        "Next.js",
+        "Supabase",
+        "OpenAI"
+      ],
+      "filters": [
+        "platform"
+      ],
+      "cover": {
+        "theme": "platform",
+        "wordmark": "Ask your data",
+        "headline": "Questions in English, answers in seconds.",
+        "tagline": "Read-only AI SQL"
+      },
+      "links": [
+        {
+          "label": "Code",
+          "url": "https://github.com/101feliki/supabase-supabase-embedded-dashboard",
+          "icon": "github"
+        }
+      ]
     },
     {
       "title": "freeCodeCamp back-end projects",
       "kind": "Certification",
       "status": "open",
       "summary": "The five projects for the Back End Development and APIs certification: a timestamp microservice, chat app, watchlist API with JWT and more.",
-      "tags": ["Node.js", "Express", "JWT"],
-      "filters": ["learning"],
-      "links": [{ "label": "Code", "url": "https://github.com/101feliki/fcc-backend-certification-projects", "icon": "github" }]
+      "value": "Certified foundations: the same habits of small, tested, working services that run through all my client work.",
+      "tags": [
+        "Node.js",
+        "Express",
+        "JWT"
+      ],
+      "filters": [
+        "learning"
+      ],
+      "cover": {
+        "theme": "learning",
+        "wordmark": "freeCodeCamp",
+        "headline": "Back-end foundations, certified.",
+        "tagline": "Back End Development and APIs"
+      },
+      "links": [
+        {
+          "label": "Code",
+          "url": "https://github.com/101feliki/fcc-backend-certification-projects",
+          "icon": "github"
+        }
+      ]
     }
   ]
 }

@@ -1,15 +1,16 @@
-<!-- {"title": "Insurance technology", "description": "Case study: three insurance services by Felix Kariuki: microinsurance fraud detection, InsureLog for Spring Boot microservices, and a policy follow-up mailer.", "nav": "projects"} -->
+<!-- {"title": "Insurance technology", "description": "Case study: Felix Kariuki's insurance work: four systems built at Birdview Microinsurance, plus fraud detection, InsureLog and a policy follow-up mailer.", "nav": "projects"} -->
 <section class="case-hero">
   <div class="wrap">
     <nav class="crumbs" aria-label="Breadcrumb"><a href="../projects.html">Projects</a> / <span>Insurance technology</span></nav>
     <span class="eyebrow">Case study · Insurance</span>
-    <h1>Insurance technology: three services for the parts of insurance that leak money</h1>
-    <p class="lead">Insurers lose money in three quiet places: claims paid that shouldn't be, problems nobody can trace across systems, and customers who start buying cover but never finish. I built a service for each, designed to plug into an insurer's existing systems rather than replace them.</p>
+    <h1>Microinsurance: seven systems for the parts of insurance that cost time and money</h1>
+    <p class="lead">At <b>Birdview Microinsurance</b> I built four internal systems: attendance, financial transactions, customer notifications and an asset registry. Beyond that, I built three services for the places insurers quietly lose money: claims paid that shouldn't be, problems nobody can trace across systems, and customers who start buying cover but never finish.</p>
+    <div class="btns" style="margin-bottom:6px"><span class="cover__brand" style="padding:5px 10px;border-radius:9px;background:#fff"><img src="../assets/img/logos/birdview.png" alt="Birdview Microinsurance" style="height:30px;width:auto"></span></div>
     <div class="facts">
+      <div class="fact"><small>Birdview</small><span>Software Engineering Intern · Nov 2025 – Jan 2026</span></div>
       <div class="fact"><small>Fraud</small><span>Express · FastAPI · PostgreSQL</span></div>
       <div class="fact"><small>Logging</small><span>Java 17 · Spring Boot 3</span></div>
-      <div class="fact"><small>Follow-ups</small><span>Node.js · Nodemailer</span></div>
-      <div class="fact"><small>Design rule</small><span>Plug in, don't rip out</span></div>
+            <div class="fact"><small>Design rule</small><span>Plug in, don't rip out</span></div>
     </div>
   </div>
 </section>
@@ -17,6 +18,7 @@
 <section class="section--tight">
   <div class="wrap case">
     <nav class="toc" aria-label="On this page">
+      <a href="#birdview">Birdview Microinsurance</a>
       <a href="#fraud">1 · Fraud detection</a>
       <a href="#insurelog">2 · InsureLog</a>
       <a href="#followup">3 · Follow-up mailer</a>
@@ -24,11 +26,24 @@
     </nav>
     <div class="case__body">
 
+      <section id="birdview">
+        <span class="eyebrow">At Birdview Microinsurance</span>
+        <h2>Four systems for a microinsurer's daily operations</h2>
+        <p>As a Software Engineering Intern (Nov 2025 – Jan 2026) I developed backend services and automation tools across the business.</p>
+        <ul>
+          <li><b>Facial recognition attendance:</b> staff check in and out by face, with identity verified by MTCNN and SSD MobileNet models. It automated attendance for <b>50+ staff</b>, with APIs for logging, authentication, reporting and analytics dashboards.</li>
+          <li><b>Financial transaction management:</b> validated database updates and audit-trail logic across <b>100+ transaction entries</b>, improving data consistency for internal workflows.</li>
+          <li><b>Customer notification platform:</b> multi-channel SMS and email alerts that cut manual communication delays with customers.</li>
+          <li><b>Asset registry:</b> lifecycle management that digitised tracking for <b>200+ organisational assets</b>.</li>
+        </ul>
+        <p class="callout"><b>The value:</b> less time on registers, spreadsheets and phone calls, and records an auditor can trust: who attended, what was paid, what the company owns, and what each customer was told.</p>
+      </section>
+
       <section id="fraud">
         <span class="eyebrow">01</span>
         <h2>Microinsurance Fraud Detection</h2>
         <p>A plug-and-play service that scores each claim for fraud risk, <b>explains why</b> a claim was flagged, and gives analysts a dashboard to decide. It can sit in front of any policy or claims system.</p>
-        <div class="flow" aria-label="How a claim is checked"><span>Claims system</span><i>→</i><span>POST /api/fraud/analyze</span><i>→</i><span>Express API</span><i>→</i><span>FastAPI scoring</span><i>→</i><span>Score 0–1 + reasons</span><i>→</i><span>Analyst dashboard</span></div>
+        <div class="flow" aria-label="How a claim is checked"><span>Claims system</span><i>→</i><span>Claim sent for scoring</span><i>→</i><span>Express API</span><i>→</i><span>FastAPI scoring</span><i>→</i><span>Score 0–1 + reasons</span><i>→</i><span>Analyst dashboard</span></div>
         <ul>
           <li>The API adds context (the client's claims in the last 30 days) before scoring.</li>
           <li>Signals include amounts far above normal for the product, several claims in a short time, claims right after a policy starts, late reporting and suspiciously round amounts.</li>
