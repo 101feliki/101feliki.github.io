@@ -395,7 +395,8 @@ code { font-family: ui-monospace, 'JetBrains Mono', Consolas, monospace; font-si
   position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; gap: 10px;
   margin: -22px -22px 4px; padding: 18px 20px; aspect-ratio: 2 / 1; min-height: 150px;
   border-radius: var(--radius) var(--radius) 0 0; color: #fff; text-decoration: none;
-  background: var(--cover-bg, #111); border-bottom: 1px solid var(--line);
+  background: radial-gradient(rgba(255, 255, 255, 0.075) 1px, transparent 1.4px) 0 0 / 16px 16px, var(--cover-bg, #111);
+  border-bottom: 1px solid var(--line);
 }
 .project--featured .cover { aspect-ratio: 2.3 / 1; }
 .cover:hover { color: #fff; }
@@ -420,6 +421,49 @@ code { font-family: ui-monospace, 'JetBrains Mono', Consolas, monospace; font-si
 .cover__tagline { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.78; }
 .cover__brand + .cover__headline { margin-top: auto; }
 
+/* Big outline illustration in the corner of covers without a screenshot. */
+.cover__art {
+  position: absolute; z-index: -1; right: -4%; bottom: -14%; height: 92%; width: auto; aspect-ratio: 1;
+  fill: none; stroke: currentColor; stroke-width: 0.9; stroke-linecap: round; stroke-linejoin: round;
+  opacity: 0.2; transform: rotate(-8deg); transition: transform 0.8s var(--ease), opacity 0.5s;
+}
+.project:hover .cover__art { transform: rotate(0deg) translate(-4%, -6%) scale(1.04); opacity: 0.3; }
+.cover--stayvinci .cover__art { color: #ddbd76; }
+
+/* Hero number: a glass chip in the top-right corner. */
+.cover__stat {
+  position: absolute; top: 14px; right: 14px; z-index: 2; display: inline-flex; align-items: baseline; gap: 6px;
+  padding: 6px 11px; border-radius: 999px; font-size: 0.72rem; font-weight: 600; color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+.cover__stat b { font-size: 1rem; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
+
+/* Device mockup: the real UI in a browser frame, tilted; straightens and rises on hover. */
+.cover--mock { perspective: 1100px; }
+.cover--mock .cover__headline, .cover--mock .cover__tagline { max-width: 52%; position: relative; z-index: 1; }
+.cover__mock {
+  position: absolute; z-index: 0; right: -6%; bottom: -16%; width: 54%;
+  border-radius: 10px 10px 0 0; overflow: hidden; background: #0d0d0d;
+  border: 1px solid rgba(255, 255, 255, 0.18); box-shadow: 0 24px 50px -16px rgba(0, 0, 0, 0.7);
+  transform: rotateY(-16deg) rotateX(6deg) rotateZ(-2deg) translateY(4%); transform-origin: left bottom;
+  transition: transform 0.7s var(--ease), box-shadow 0.7s var(--ease);
+}
+.cover__bar { display: flex; gap: 4px; padding: 6px 8px; background: #1a1a1a; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+.cover__bar i { width: 6px; height: 6px; border-radius: 50%; background: rgba(255, 255, 255, 0.25); }
+.cover__mock img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; }
+.project:hover .cover__mock { transform: rotateY(-6deg) rotateX(2deg) rotateZ(0deg) translateY(-2%); box-shadow: 0 30px 60px -18px rgba(0, 0, 0, 0.8); }
+/* Narrow (three-column) cards: smaller mockup, lower, so the headline keeps room. */
+.bento .span-4 .cover__mock { width: 50%; bottom: -26%; right: -8%; }
+.bento .span-4 .cover--mock .cover__headline { max-width: 56%; font-size: 1.08rem; }
+.bento .span-4 .cover--mock .cover__tagline { display: none; }
+@media (max-width: 640px) {
+  .cover__mock { width: 52%; bottom: -24%; }
+  .cover--mock .cover__headline { max-width: 55%; font-size: 1.05rem; }
+  .cover--mock .cover__tagline { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .cover__mock { transition: none; } }
+
 /* Brand themes */
 .cover--mustek { --cover-bg: linear-gradient(135deg, #0a3a74 0%, #1254a3 55%, #2a7bd4 100%); --cover-glow: rgba(150, 205, 255, 0.35); }
 .cover--mustek .cover__brand, .cover--movit .cover__brand { padding: 5px 10px; border-radius: 9px; background: #fff; box-shadow: 0 6px 16px -8px rgba(0, 0, 0, 0.5); }
@@ -442,6 +486,77 @@ code { font-family: ui-monospace, 'JetBrains Mono', Consolas, monospace; font-si
 .cover--platform { --cover-bg: linear-gradient(135deg, #15181d 0%, #222830 100%); --cover-glow: rgba(255, 255, 255, 0.14); }
 .cover--realestate { --cover-bg: linear-gradient(135deg, #0b3b66 0%, #1d6fb8 100%); --cover-glow: rgba(170, 220, 255, 0.35); }
 .cover--learning { --cover-bg: linear-gradient(135deg, #0a0a23 0%, #1b1b32 100%); --cover-glow: rgba(255, 255, 255, 0.12); }
+
+/* ---------- Bento grid (HeroUI-style): cards of different widths on 12 columns ---------- */
+.bento { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 18px; }
+.span-4 { grid-column: span 4; } .span-5 { grid-column: span 5; } .span-6 { grid-column: span 6; }
+.span-7 { grid-column: span 7; } .span-8 { grid-column: span 8; } .span-12 { grid-column: span 12; }
+/* While a filter is on, the hand-made rhythm no longer adds up: use even thirds. */
+.bento.is-filtered > * { grid-column: span 4; }
+@media (max-width: 960px) { .bento > *, .bento.is-filtered > * { grid-column: span 6; } .bento > .span-12 { grid-column: span 12; } }
+@media (max-width: 640px) { .bento > *, .bento.is-filtered > * { grid-column: span 12; } }
+
+/* Project cards: large radius and soft layered shadows, like HeroUI. Cover shape follows the card width. */
+.bento .project { border-radius: 24px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 10px 30px -18px var(--shadow); }
+.bento .project .cover { border-radius: 24px 24px 0 0; }
+.bento .span-7 .cover, .bento .span-8 .cover, .bento .span-12 .cover { aspect-ratio: 2.6 / 1; }
+.bento .span-6 .cover { aspect-ratio: 2.2 / 1; }
+.bento .span-5 .cover, .bento .span-4 .cover { aspect-ratio: 1.75 / 1; }
+.bento .span-7 .cover__headline, .bento .span-8 .cover__headline, .bento .span-12 .cover__headline { font-size: clamp(1.3rem, 1rem + 1vw, 1.75rem); max-width: 18ch; }
+
+/* ---------- HeroUI cover cards (Home): artwork fills the card, frosted footer ---------- */
+.hcard {
+  position: relative; display: flex; flex-direction: column; min-height: 380px; border-radius: 24px; overflow: hidden; isolation: isolate;
+  border: 1px solid var(--line); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 24px 50px -28px var(--shadow);
+  transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease);
+}
+.hcard:hover { transform: translateY(-4px); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 34px 60px -28px var(--shadow); }
+.hcard .cover {
+  position: absolute; inset: 0; margin: 0; aspect-ratio: auto; border-radius: 0; border: 0;
+  justify-content: flex-start; padding: 22px 24px 120px;
+}
+.hcard .cover__brand { margin-bottom: 18px; }
+.hcard .cover__headline { margin-top: 0; font-size: clamp(1.45rem, 1.1rem + 1.2vw, 2rem); max-width: 16ch; }
+.hcard .cover__tagline { margin-top: 10px; }
+.hcard .cover--mock .cover__headline, .hcard .cover--mock .cover__tagline { max-width: 48%; }
+.hcard .cover__mock { width: 56%; bottom: 70px; right: -5%; }
+.hcard .cover__art { height: 70%; bottom: 60px; }
+.hcard__foot {
+  position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  padding: 14px 16px 14px 20px; margin: auto 10px 10px; border-radius: 18px;
+  background: rgba(10, 10, 10, 0.45); border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+.hcard__text { min-width: 0; color: rgba(255, 255, 255, 0.78); font-size: 0.82rem; line-height: 1.45; }
+.hcard__text b { display: block; color: #fff; font-size: 0.98rem; margin-bottom: 2px; }
+.hcard__text span { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.hcard__actions { flex: none; }
+/* On the glass footer the button is always white, like HeroUI's pill buttons. */
+.hcard__actions .btn--primary { --primary-bg: #ffffff; --primary-ink: #0f1419; --primary-hover: #e9ecef; --reflect: rgba(255, 255, 255, 0.9); --reflect-glow: rgba(255, 255, 255, 0.5); --sweep: rgba(15, 20, 25, 0.12); border-radius: 999px; }
+@media (max-width: 640px) {
+  .hcard { min-height: 360px; }
+  .hcard__foot { flex-direction: column; align-items: flex-start; }
+  .hcard .cover { padding-bottom: 160px; }
+  .hcard .cover__mock { bottom: 120px; }
+}
+
+/* Project cards: designer polish. Gradient border on hover, stronger titles, and slimmer
+   cards in the bento grid (details live in the case studies). */
+:root { --card-solid: #0b0b0b; }
+:root[data-theme='light'] { --card-solid: #ffffff; }
+@media (prefers-color-scheme: light) { :root:not([data-theme='dark']) { --card-solid: #ffffff; } }
+.project { gap: 14px; }
+.project h3 { font-size: 1.14rem; letter-spacing: -0.02em; }
+.project:hover {
+  border-color: transparent;
+  background: linear-gradient(var(--card-solid), var(--card-solid)) padding-box,
+    linear-gradient(135deg, var(--accent), transparent 38%, transparent 62%, var(--hover-line)) border-box;
+}
+.bento .project__impact { display: none; }
+.bento .span-7 .project__impact, .bento .span-8 .project__impact, .bento .span-12 .project__impact { display: grid; }
+.bento .project .tags .tag:nth-child(n + 5) { display: none; }
+.bento .project > p:not(.project__value) { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 
 /* "Value" line on project cards */
 .project__value { margin: 0; padding: 10px 12px; border-radius: 10px; font-size: 0.86rem; color: var(--ink); background: var(--soft); border: 1px solid var(--line); }
@@ -568,3 +683,15 @@ code { font-family: ui-monospace, 'JetBrains Mono', Consolas, monospace; font-si
   .marquee__track { animation: none !important; }
 }
 .no-js .reveal { opacity: 1; transform: none; }
+
+/* Fixes for the HeroUI layouts */
+.bento .hcard .cover { aspect-ratio: auto; height: 100%; }
+.hcard .cover__mock { top: 78px; bottom: auto; }
+.hcard .cover--mock .cover__headline { max-width: 46%; }
+.cover__stat { z-index: 3; }
+.bento .span-12 .cover { aspect-ratio: 5 / 1; }
+.bento .span-12 .cover__art { height: 150%; bottom: -40%; right: 2%; }
+@media (max-width: 640px) {
+  .bento .span-12 .cover { aspect-ratio: 1.75 / 1; }
+  .hcard .cover__mock { top: auto; bottom: 150px; width: 48%; }
+}

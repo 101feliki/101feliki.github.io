@@ -40,6 +40,7 @@ if (filters.length && cards.length) {
     btn.insertAdjacentHTML('beforeend', ` <span>${n}</span>`)
     btn.addEventListener('click', () => {
       filters.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)))
+      btn.closest('section')?.querySelector('.bento')?.classList.toggle('is-filtered', key !== 'all')
       cards.forEach((c) => {
         const show = key === 'all' || c.dataset.tags.split(' ').includes(key)
         if (show) c.removeAttribute('data-hidden')
@@ -108,7 +109,7 @@ document.querySelectorAll('.card, .contact-item, .band__item').forEach((el) => {
 })
 
 // Stagger: cards in the same grid come in one after another.
-document.querySelectorAll('.grid, .stats, .band__list').forEach((grid) => {
+document.querySelectorAll('.grid, .bento, .stats, .band__list').forEach((grid) => {
   ;[...grid.children].filter((c) => c.classList.contains('reveal')).forEach((c, i) => c.style.setProperty('--d', `${Math.min(i, 6) * 80}ms`))
 })
 

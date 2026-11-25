@@ -44,18 +44,43 @@ const STATUS = {
   research: '<span class="badge badge--open">Research</span>',
   experience: '<span class="badge badge--live">Work experience</span>',
 }
-function card(p, up, { featured = false } = {}) {
+function card(p, up, opts = {}) {
+  const featured = opts.featured ?? false
   const href = (u) => (/^(https?:|mailto:|#)/.test(u) ? u : up + u)
   const external = (u) => (/^https?:/.test(u) ? ' rel="noopener"' : '')
   // Advert-style cover: brand logo (or the name as a wordmark), headline and tagline. Pure HTML/CSS,
   // so it stays sharp, themable and weighs nothing. Links to the case study (or the first link).
   const c = p.cover
   const target = p.caseStudy || p.links?.[0]?.url || ''
+  // Large outline illustration for covers without a screenshot.
+  const ART = {
+    layers: 'M12 3l9 5-9 5-9-5 9-5zM3 12.5l9 5 9-5M3 16.5l9 5 9-5',
+    face: 'M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M9 10h.01M15 10h.01M9.5 15a3.5 3.5 0 0 0 5 0',
+    coins: 'M12 4c4.4 0 8 1.3 8 3s-3.6 3-8 3-8-1.3-8-3 3.6-3 8-3zM4 7v5c0 1.7 3.6 3 8 3s8-1.3 8-3V7M4 12v5c0 1.7 3.6 3 8 3s8-1.3 8-3v-5',
+    box: 'M21 8l-9-5-9 5 9 5 9-5zM3 8v8l9 5 9-5V8M12 13v8',
+    chat: 'M4 5h16v11H8l-4 4V5zM8 9h8M8 12h5',
+    search: 'M11 4a7 7 0 1 1 0 14 7 7 0 0 1 0-14zM20 20l-4-4M8 11h6',
+    pulse: 'M3 12h4l3-7 4 14 3-7h4',
+    mail: 'M4 6h16v12H4zM4 7l8 6 8-6',
+    doc: 'M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5zM14 3v5h5M9 15l2 2 4-4',
+    returns: 'M9 14L4 9l5-5M4 9h11a5 5 0 0 1 0 10h-3',
+    map: 'M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14',
+    home: 'M3 11l9-7 9 7M5 10v10h14V10M10 20v-6h4v6',
+    cube: 'M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3zM12 12l8-4.5M12 12v9M12 12L4 7.5',
+    chart: 'M4 20V11M10 20V5M16 20v-7M2 20h20',
+    cap: 'M2 9l10-5 10 5-10 5L2 9zM6 11v5c3 2 9 2 12 0v-5',
+    shield: 'M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6l7-3z',
+  }
+  const art = (k) => (ART[k] ? `<svg class="cover__art" viewBox="0 0 24 24" aria-hidden="true"><path d="${ART[k]}"/></svg>` : '')
+  // Optional extras: "stat" = one hero number in a glass chip; "mockup" = a real screenshot in a
+  // tilted browser frame (only for the project's own UI).
   const cover = c
-    ? `<a class="cover cover--${esc(c.theme)}" href="${target ? href(target) : '#'}"${p.caseStudy ? '' : external(target)} tabindex="-1" aria-hidden="true">
+    ? `<a class="cover cover--${esc(c.theme)}${c.mockup ? ' cover--mock' : ''}" href="${target ? href(target) : '#'}"${p.caseStudy ? '' : external(target)} tabindex="-1" aria-hidden="true">
     <span class="cover__brand">${c.logo ? `<img src="${up}${c.logo}" alt="" loading="lazy">` : `<b>${esc(c.wordmark)}</b>`}</span>
+    ${c.stat ? `<span class="cover__stat"><b>${esc(c.stat[0])}</b>${esc(c.stat[1] ?? '')}</span>` : ''}
     <span class="cover__headline">${esc(c.headline)}</span>
     ${c.tagline ? `<span class="cover__tagline">${esc(c.tagline)}</span>` : ''}
+    ${c.mockup ? `<span class="cover__mock"><span class="cover__bar"><i></i><i></i><i></i></span><img src="${up}${c.mockup}" alt="" loading="lazy" width="640" height="360"></span>` : art(c.icon)}
   </a>`
     : ''
   const value = p.value ? `\n  <p class="project__value"><b>Value</b>${esc(p.value)}</p>` : ''
@@ -65,7 +90,19 @@ function card(p, up, { featured = false } = {}) {
     ...(p.links ?? []).map((l) => `<a class="btn btn--ghost btn--sm" href="${href(l.url)}"${external(l.url)}>${l.icon === 'github' || l.icon === 'gitlab' ? `{{icon:${l.icon}}} ` : ''}${esc(l.label)}${l.icon === 'external' ? ' {{icon:external}}' : ''}</a>`),
     p.privateCode ? '<span class="badge badge--private">{{icon:lock}} Private code</span>' : '',
   ].filter(Boolean)
-  return `<article class="card project${featured || p.featured ? ' project--featured' : ''} reveal" data-tags="${esc((p.filters ?? []).join(' '))}">
+  // HeroUI-style cover card (Home): artwork fills the card, label + headline on top,
+  // a frosted-glass footer with the name, value and actions at the bottom.
+  if (opts.hero) {
+    const main = p.caseStudy ? `<a class="btn btn--primary btn--sm" href="${href(p.caseStudy)}">Case study</a>` : ''
+    return `<article class="hcard span-${opts.span ?? 6} reveal">
+  ${cover}
+  <div class="hcard__foot">
+    <div class="hcard__text"><b>${esc(p.title)}</b><span>${esc(p.value || p.summary)}</span></div>
+    <div class="hcard__actions">${main}</div>
+  </div>
+</article>`
+  }
+  return `<article class="card project${featured || p.featured ? ' project--featured' : ''} span-${opts.span ?? 4} reveal" data-tags="${esc((p.filters ?? []).join(' '))}">
   ${cover}
   <div class="project__top"><span class="project__kind">${esc(p.kind)}</span>${STATUS[p.status] ?? ''}</div>
   <h3>${esc(p.title)}</h3>
@@ -74,10 +111,24 @@ function card(p, up, { featured = false } = {}) {
   <div class="project__links">${links.join('\n    ')}</div>
 </article>`
 }
+// Bento rhythm on a 12-column grid: wide + narrow, three across, narrow + wide, two halves…
+// Each row adds up to 12, so the grid stays even whatever the number of projects.
+const BENTO = [7, 5, 4, 4, 4, 5, 7, 6, 6]
+const HOME = [7, 5, 5, 7]
 const projectCards = (html, up) =>
   html
-    .replace('{{projects}}', () => projects.filter((p) => !p.homeOnly).map((p) => card(p, up)).join('\n'))
-    .replace('{{featured}}', () => projects.filter((p) => p.featured).map((p) => card(p, up, { featured: true })).join('\n'))
+    .replace('{{projects}}', () =>
+      projects
+        .filter((p) => !p.homeOnly)
+        .map((p, i, all) => {
+          // Last row: fill it so it never leaves a gap.
+          const left = all.length - i
+          const span = left === 1 && i % 3 !== 0 ? 12 : BENTO[i % BENTO.length]
+          return card(p, up, { span })
+        })
+        .join('\n'),
+    )
+    .replace('{{featured}}', () => projects.filter((p) => p.featured).map((p, i) => card(p, up, { hero: true, span: HOME[i % HOME.length] })).join('\n'))
 
 // {{icon:github}} in page sources becomes the inline SVG.
 const expand = (html) => html.replace(/\{\{icon:(\w+)\}\}/g, (_, n) => icon(n))

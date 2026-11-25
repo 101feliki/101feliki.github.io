@@ -1,5 +1,5 @@
 {
-  "_help": "One entry per project; the site rebuilds from this file on every push (see README). Fields: title, kind, status (live | building | open | private | research | experience), summary, value (the business value: what it can do for the people who use it), impact (short bullets, optional), tags, filters (work, insurance, platform, security, learning), featured (true = on Home), homeOnly (true = only on Home), cover { theme (mustek | birdview | stayvinci | aegis | insurance | movit | security | platform | learning | realestate), logo (image path) or wordmark (text), headline, tagline }, caseStudy (optional page), links (label, url, icon: github | gitlab | external), privateCode.",
+  "_help": "One entry per project; the site rebuilds from this file on every push (see README). Fields: title, kind, status (live | building | open | private | research | experience), summary, value (the business value: what it can do for the people who use it), impact (short bullets, optional), tags, filters (work, insurance, platform, security, learning), featured (true = on Home), homeOnly (true = only on Home), cover { theme (mustek | birdview | stayvinci | aegis | insurance | movit | security | platform | learning | realestate), logo (image path) or wordmark (text), headline, tagline, stat [\"number\", \"label\"] (optional hero number), icon (optional illustration: layers | face | coins | box | chat | search | pulse | mail | doc | returns | map | home | cube | chart | cap | shield), mockup (optional screenshot of the project's own UI, 640x360) }, caseStudy (optional page), links (label, url, icon: github | gitlab | external), privateCode.",
   "projects": [
     {
       "title": "Mustek East Africa platform",
@@ -27,7 +27,12 @@
         "theme": "mustek",
         "logo": "assets/img/logos/mustek.png",
         "headline": "Powering Mustek's online store",
-        "tagline": "Catalogue · Orders · Careers · Security"
+        "tagline": "Catalogue · Orders · Careers · Security",
+        "stat": [
+          "76",
+          "automated tests"
+        ],
+        "mockup": "assets/img/shots/mustek-api.webp"
       },
       "caseStudy": "projects/mustek.html",
       "links": [
@@ -65,7 +70,12 @@
         "theme": "stayvinci",
         "logo": "assets/img/logos/stayvinci.svg",
         "headline": "The places you love, booked privately.",
-        "tagline": "Spas · Ateliers · Stays"
+        "tagline": "Spas · Ateliers · Stays",
+        "stat": [
+          "4 apps",
+          "one API"
+        ],
+        "mockup": "assets/img/shots/stayvinci.webp"
       },
       "caseStudy": "projects/stayvinci.html",
       "links": [
@@ -98,7 +108,12 @@
         "theme": "birdview",
         "headline": "Stop fraud. Serve faster. Account for every shilling.",
         "tagline": "Birdview Microinsurance · 7 systems",
-        "logo": "assets/img/logos/birdview.png"
+        "logo": "assets/img/logos/birdview.png",
+        "stat": [
+          "7",
+          "systems"
+        ],
+        "icon": "layers"
       },
       "caseStudy": "projects/insurance.html",
       "links": [
@@ -131,7 +146,12 @@
         "theme": "aegis",
         "wordmark": "AEGIS",
         "headline": "Proof, not promises.",
-        "tagline": "Authorized · Read-only · Tamper-evident"
+        "tagline": "Authorized · Read-only · Tamper-evident",
+        "stat": [
+          "0",
+          "dependencies"
+        ],
+        "mockup": "assets/img/shots/aegis.webp"
       },
       "caseStudy": "projects/security.html",
       "links": [
@@ -167,7 +187,12 @@
         "theme": "birdview",
         "headline": "Your face is your timecard.",
         "tagline": "Facial recognition attendance",
-        "logo": "assets/img/logos/birdview.png"
+        "logo": "assets/img/logos/birdview.png",
+        "stat": [
+          "50+",
+          "staff"
+        ],
+        "icon": "face"
       },
       "links": [
         {
@@ -199,7 +224,12 @@
         "theme": "birdview",
         "headline": "Every shilling, accounted for.",
         "tagline": "Transactions · Validation · Audit trail",
-        "logo": "assets/img/logos/birdview.png"
+        "logo": "assets/img/logos/birdview.png",
+        "stat": [
+          "100+",
+          "audited entries"
+        ],
+        "icon": "coins"
       },
       "links": [
         {
@@ -230,7 +260,12 @@
         "theme": "birdview",
         "headline": "Know what you own.",
         "tagline": "Asset lifecycle tracking",
-        "logo": "assets/img/logos/birdview.png"
+        "logo": "assets/img/logos/birdview.png",
+        "stat": [
+          "200+",
+          "assets tracked"
+        ],
+        "icon": "box"
       },
       "links": [
         {
@@ -260,7 +295,12 @@
         "theme": "birdview",
         "headline": "Every customer, every channel.",
         "tagline": "SMS · Email · Campaigns",
-        "logo": "assets/img/logos/birdview.png"
+        "logo": "assets/img/logos/birdview.png",
+        "stat": [
+          "2",
+          "channels: SMS + email"
+        ],
+        "icon": "chat"
       },
       "links": [
         {
@@ -294,7 +334,12 @@
         "theme": "insurance",
         "wordmark": "Fraud Detection",
         "headline": "Catch fraud before it's paid.",
-        "tagline": "Explainable risk scores for every claim"
+        "tagline": "Explainable risk scores for every claim",
+        "stat": [
+          "0–1",
+          "risk score"
+        ],
+        "icon": "search"
       },
       "caseStudy": "projects/insurance.html#fraud",
       "links": [
@@ -329,7 +374,12 @@
         "theme": "insurance",
         "wordmark": "InsureLog",
         "headline": "Every claim, traceable.",
-        "tagline": "Logging built for insurers"
+        "tagline": "Logging built for insurers",
+        "stat": [
+          "2",
+          "steps to plug in"
+        ],
+        "icon": "pulse"
       },
       "caseStudy": "projects/insurance.html#insurelog",
       "links": [
@@ -362,7 +412,8 @@
         "theme": "insurance",
         "wordmark": "Follow-up",
         "headline": "Win back unfinished policies.",
-        "tagline": "Personal emails, sent at scale"
+        "tagline": "Personal emails, sent at scale",
+        "icon": "mail"
       },
       "caseStudy": "projects/insurance.html#followup",
       "links": [
@@ -397,7 +448,8 @@
         "theme": "movit",
         "logo": "assets/img/logos/movit.png",
         "headline": "Paper forms, retired.",
-        "tagline": "Signatures · QR sign-in · Auto PDFs"
+        "tagline": "Signatures · QR sign-in · Auto PDFs",
+        "icon": "doc"
       },
       "links": [
         {
@@ -428,7 +480,12 @@
         "theme": "movit",
         "logo": "assets/img/logos/movit.png",
         "headline": "Returns in minutes, not days.",
-        "tagline": "Excel · Freshservice · Freshsales"
+        "tagline": "Excel · Freshservice · Freshsales",
+        "stat": [
+          "500",
+          "items per request"
+        ],
+        "icon": "returns"
       },
       "links": [
         {
@@ -459,7 +516,12 @@
         "theme": "security",
         "wordmark": "ARTEX map",
         "headline": "Know the attacker's playbook.",
-        "tagline": "Defences for AI-driven attacks"
+        "tagline": "Defences for AI-driven attacks",
+        "stat": [
+          "10",
+          "segments"
+        ],
+        "icon": "map"
       },
       "caseStudy": "projects/security.html#artex",
       "links": [
@@ -491,7 +553,8 @@
         "theme": "realestate",
         "wordmark": "BlueVision",
         "headline": "Verified land, no stress.",
-        "tagline": "For buyers at home and abroad"
+        "tagline": "For buyers at home and abroad",
+        "icon": "home"
       },
       "links": [
         {
@@ -521,7 +584,8 @@
         "theme": "security",
         "wordmark": "Blokichain",
         "headline": "Votes no one can rig.",
-        "tagline": "On-chain · AI-checked"
+        "tagline": "On-chain · AI-checked",
+        "icon": "cube"
       },
       "links": [
         {
@@ -549,7 +613,8 @@
         "theme": "platform",
         "wordmark": "Ask your data",
         "headline": "Questions in English, answers in seconds.",
-        "tagline": "Read-only AI SQL"
+        "tagline": "Read-only AI SQL",
+        "icon": "chart"
       },
       "links": [
         {
@@ -577,7 +642,8 @@
         "theme": "learning",
         "wordmark": "freeCodeCamp",
         "headline": "Back-end foundations, certified.",
-        "tagline": "Back End Development and APIs"
+        "tagline": "Back End Development and APIs",
+        "icon": "cap"
       },
       "links": [
         {
