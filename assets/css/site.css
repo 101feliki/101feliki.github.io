@@ -844,3 +844,86 @@ code { font-family: ui-monospace, 'JetBrains Mono', Consolas, monospace; font-si
 .scroll-cue span { background: var(--ember); }
 .chip--a b { color: var(--ember); }
 ::selection { background: var(--ember-soft); }
+
+/* =====================================================================================
+   Layered cut-corner cards (services): outline copy offset up-left, orange shadow copy
+   offset down-right, round badge on the top edge, pill on the bottom edge, fine stripes.
+   ===================================================================================== */
+:root { --chamfer: polygon(14px 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px), 0 14px); --svc-bg: #111316; --svc-shadow: rgba(255, 106, 43, 0.5); --cream: #efe6c6; }
+:root[data-theme='light'] { --svc-bg: #ffffff; --svc-shadow: rgba(232, 89, 12, 0.35); --cream: #2b2418; }
+@media (prefers-color-scheme: light) { :root:not([data-theme='dark']) { --svc-bg: #ffffff; --svc-shadow: rgba(232, 89, 12, 0.35); --cream: #2b2418; } }
+
+.svc-row { gap: 44px 30px; padding-top: 18px; }
+.svc-row .svc {
+  position: relative; display: block; min-height: 220px; margin: 0 10px 0 8px; padding: 0; border: 0; border-radius: 0; background: none;
+  color: var(--ink-2); transform: none;
+}
+.svc-row .svc:hover { transform: none; border: 0; }
+.svc__frame, .svc__back, .svc__body { position: absolute; inset: 0; clip-path: var(--chamfer); transition: transform 0.5s var(--ease); }
+.svc__back { background: var(--svc-shadow); transform: translate(10px, 10px); }
+.svc__frame { background: var(--line-2); transform: translate(-9px, -9px); }
+.svc__frame::after { content: ''; position: absolute; inset: 1.5px; clip-path: var(--chamfer); background: var(--bg); }
+.svc__body {
+  position: relative; z-index: 1; display: grid; gap: 8px; align-content: start; min-height: 220px; padding: 44px 24px 44px;
+  background: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 15px), var(--svc-bg);
+}
+.svc-row .svc:hover .svc__frame { transform: translate(-13px, -13px); }
+.svc-row .svc:hover .svc__back { transform: translate(14px, 14px); }
+.svc-row .svc:hover .svc__body { transform: translateY(-2px); }
+.svc__body b { color: var(--heading); font-size: 1.05rem; }
+.svc__text { font-size: 0.87rem; line-height: 1.55; color: var(--ink-2); }
+.svc__badge {
+  position: absolute; z-index: 2; top: -24px; left: 24px; display: grid; place-items: center; width: 50px; height: 50px; border-radius: 50%;
+  color: #0f1419; background: #ffffff; box-shadow: 0 0 0 5px var(--bg), 0 10px 22px -10px var(--shadow);
+}
+.svc__badge svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.svc-row .svc .svc__pill {
+  position: absolute; z-index: 2; right: 26px; bottom: -16px; padding: 7px 15px; border-radius: 999px; opacity: 1;
+  font-size: 0.78rem; font-weight: 700; line-height: 1.2; color: var(--heading); background: var(--svc-bg); border: 1.5px solid var(--line-2);
+  box-shadow: 0 0 0 4px var(--bg); transition: border-color 0.3s, color 0.3s;
+}
+.svc-row .svc:hover .svc__pill { border-color: var(--ember); color: var(--ember); }
+/* Highlighted card: green body, orange pill. */
+.svc--on .svc__body { background: repeating-linear-gradient(135deg, rgba(0, 0, 0, 0.06) 0 1px, transparent 1px 15px), var(--pop); }
+.svc--on .svc__body b, .svc--on .svc__text { color: var(--pop-ink); }
+.svc--on .svc__text { opacity: 0.85; }
+.svc-row .svc--on .svc__pill { color: var(--ember-ink); background: var(--ember); border-color: var(--ember); }
+.svc-row .svc--on:hover .svc__pill { color: var(--ember-ink); }
+:root[data-theme='light'] .svc__badge { color: #ffffff; background: #0f1419; }
+@media (prefers-color-scheme: light) { :root:not([data-theme='dark']) .svc__badge { color: #ffffff; background: #0f1419; } }
+@media (prefers-reduced-motion: reduce) { .svc__frame, .svc__back, .svc__body { transition: none; } }
+
+/* =====================================================================================
+   Display type (Bodoni Moda): the hero name and a stacked editorial menu.
+   ===================================================================================== */
+.hero2__name { font-family: 'Bodoni Moda', Georgia, serif; font-weight: 500; letter-spacing: -0.01em; font-size: clamp(2.4rem, 1.6rem + 3vw, 3.7rem); line-height: 1.02; }
+
+.stack-nav { padding: 80px 0 70px; border-top: 1px solid var(--line); }
+.stack-nav__in { display: grid; grid-template-columns: 36px minmax(0, 0.85fr) minmax(0, 1.6fr); gap: 36px; align-items: end; }
+.stack-nav__rail { display: flex; flex-direction: column; align-items: center; gap: 16px; align-self: stretch; color: var(--muted); }
+.stack-nav__rail a { color: var(--muted); }
+.stack-nav__rail a:hover { color: var(--ember); }
+.stack-nav__rail i { flex: 1; width: 1px; min-height: 60px; background: var(--line-2); }
+.stack-nav__rail span { writing-mode: vertical-rl; transform: rotate(180deg); font-size: 0.7rem; letter-spacing: 0.12em; }
+.stack-nav__intro b { display: block; margin-bottom: 14px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--heading); }
+.stack-nav__intro p { max-width: 34ch; font-size: 0.88rem; color: var(--ink-2); }
+.stack-nav__links { display: grid; justify-items: start; }
+.stack-nav__links a {
+  position: relative; font-family: 'Bodoni Moda', Georgia, serif; font-weight: 500; text-transform: uppercase;
+  font-size: clamp(2.6rem, 1.4rem + 5vw, 5.4rem); line-height: 0.98; letter-spacing: 0.01em; color: var(--cream);
+}
+.stack-nav__links a span { display: inline-block; transition: transform 0.5s var(--ease), color 0.3s; }
+.stack-nav__links a::after {
+  content: '→'; position: absolute; top: 50%; right: -1.1em; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.4em;
+  color: var(--ember); opacity: 0; transform: translate(-10px, -50%); transition: opacity 0.3s, transform 0.5s var(--ease);
+}
+.stack-nav__links a:hover { color: var(--ember); }
+.stack-nav__links a:hover span { transform: translateX(14px); font-style: italic; }
+.stack-nav__links a:hover::after { opacity: 1; transform: translate(14px, -50%); }
+@media (max-width: 860px) {
+  .stack-nav__in { grid-template-columns: 1fr; gap: 24px; }
+  .stack-nav__rail { flex-direction: row; align-self: auto; }
+  .stack-nav__rail i { flex: 0 0 60px; width: 60px; height: 1px; min-height: 0; }
+  .stack-nav__rail span { writing-mode: horizontal-tb; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) { .stack-nav__links a span, .stack-nav__links a::after { transition: none; } }
